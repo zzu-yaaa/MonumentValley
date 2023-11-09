@@ -1,8 +1,7 @@
 # MonumentValley
-2023년 2학기 컴퓨터 그래픽스 텀프로젝트
 
-실행방법
-1. git clone
-2. cd MonumentVally
-3. npx http-server
-4. gallery/
+试玩地址如下
+
+https://hypnosnova.github.io/MonumentValley/gallery/1.html
+
+https://hypnosnova.github.io/MonumentValley/gallery/2.html

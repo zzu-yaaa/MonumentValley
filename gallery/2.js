@@ -1,9 +1,9 @@
 var map = {
-	background: 0xefe196,
+	background: 0xffffff/*efe196*/, //이거 도대체뭐냐
 	levelBoard: {
 		life: 2500,
 		duration: 1000,
-		backgroundColor: "rgba(0,0,0,0.4)",
+		backgroundColor: "rgba(0,0,0,0.4)", //안내문구 배경
 		info: [ {
 			type: "pic",
 			src: "img/common/border.png",
@@ -251,7 +251,7 @@ var map = {
 		d: 2,
 		height: 4
 	}, {
-		type: "stick",
+		type: "stick2",
 		y: 4,
 		z: -6,
 		d: 3,
@@ -555,15 +555,16 @@ var map = {
 	materials: {
 		m0: {
 			type: "L",
-			color: 0xdad282
+			color: 0xd7ebc2,
+			mapId: "img/ivy.png"
 		},
 		m1: {
 			type: "L",
-			color: 0xafa862
+			color: 0xafa862 //어두운 모래
 		},
 		m2: {
 			type: "L",
-			color: 0xff6600
+			color: 0x5e9f24 //조작기둥
 		},
 		m3: {
 			type: "L",
@@ -589,11 +590,11 @@ var map = {
 		},
 		st: {
 			type: "L",
-			color: 0x444444,
+			color: 0x444444, //계단?
 		}
 	},
 	textures: [ "img/path/texture0.jpg", "img/common/border.png",
-		"img/level2ground.png", "img/null.png", "img/endPoint.png"
+		"img/level2ground.png", "img/null.png", "img/endPoint.png","img/ivy.png"
 	],
 	lights: [ {
 			key: "areaLight",
