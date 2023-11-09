@@ -1,9 +1,9 @@
 var map = {
-	background: 0xffffff/*efe196*/, //이거 도대체뭐냐
+	background: 0xefe196,
 	levelBoard: {
 		life: 2500,
 		duration: 1000,
-		backgroundColor: "rgba(0,0,0,0.4)", //안내문구 배경
+		backgroundColor: "rgba(0,0,0,0.4)",
 		info: [ {
 			type: "pic",
 			src: "img/common/border.png",
@@ -11,16 +11,15 @@ var map = {
 			y: 0.15
 		}, {
 			type: "text",
-			text: "Chapter 2",
-			family: "微软雅黑", //글꼴
-
+			text: "第二章",
+			family: "微软雅黑",
 			size: 0.035,
 			y: 0.27,
 			color: "#ffffff",
 			weight: "bolder"
 		}, {
 			type: "text",
-			text: "Forest",
+			text: "花园",
 			family: "微软雅黑",
 			size: 0.07,
 			y: 0.37,
@@ -29,31 +28,31 @@ var map = {
 		}, {
 			type: "text",
 			text: "─────",
-			family: "bold",
+			family: "微软雅黑",
 			size: 0.02,
 			y: 0.45,
 			color: "#ffffff",
 			weight: "bold"
 		}, {
 			type: "text",
-			text: "부제",
-			family: "bold",
+			text: "在此",
+			family: "微软雅黑",
 			size: 0.03,
 			y: 0.5,
 			color: "#ffffff",
 			weight: "bolder"
 		}, {
 			type: "text",
-			text: "숲속에서",
-			family: "bold",
+			text: "我要向",
+			family: "微软雅黑",
 			size: 0.04,
 			y: 0.625,
 			color: "#ffffff",
 			weight: "bold"
 		}, {
 			type: "text",
-			text: "",
-			family: "bold",
+			text: "纪念碑谷致敬",
+			family: "微软雅黑",
 			size: 0.04,
 			y: 0.7,
 			color: "#ffffff",
@@ -91,13 +90,12 @@ var map = {
 	onGameStart: function() {
 		app.world.childrenWithId.turn.gameState = 0;
 	},
-	blocks: [ 
-		{
+	blocks: [ {
 		type: "ground",
-		width: 30,
-		height: 30,
+		width: 22,
+		height: 22,
 		x: 0,
-		y: -4,
+		y: -3,
 		rx: -Math.PI / 2,
 		materialId: "m3"
 	}, {
@@ -157,132 +155,108 @@ var map = {
 		materialId: "st",
 		cannotClick: true
 	}, {
-		//맨 밑에 사각형
 		x: -5.5,
 		y: -1,
 		sx: 2,
 		sy: 3
-		
 	}, {
-		//그 위에 기둥
 		x: -6,
 		y: 3.5,
 		sy: 6
 	}, {
-		//앞 쪽 아치
 		type: "arc",
 		ry: Math.PI,
 		x: -5,
 		y: 6
 	}, {
-		//아치 앞 평지
 		type: "plane",
 		x: -4,
 		y: 6
 	}, {
-		//기둥 옆 아치
 		type: "arc",
 		ry: -Math.PI / 2,
 		x: -6,
 		z: -1,
 		y: 6
 	}, {
-		//오른쪽 기둥 옆 아치
 		type: "arc",
 		x: -1,
 		z: -6,
 		y: 6
 	}, {
-		//오른쪽 위 기둥
 		sy: 2,
 		y: 5.5,
 		z: -6
 	}, {
-		//오른쪽 기둥 앞아치
 		type: "arc",
 		ry: Math.PI / 2,
 		z: -5,
 		y: 6
 	}, {
-		// 그 앞 평면
 		type: "plane",
 		y: 6,
-		z: -4
+		z: -4,
 	}, {
-		//오른쪽 아래 기둥
 		sy: 3,
 		z: -6,
 		y: -1
 	}, {
-		//왼쪽 기둥 옆 아치 옆 평면
 		type: "plane",
 		x: -6,
 		y: 6,
 		z: -3.5,
 		sz: 4
 	}, {
-		//오른쪽 기둥 옆 아치 옆 평명
 		type: "plane",
 		x: -3.5,
 		y: 6,
 		z: -6,
-		sx: 4	
+		sx: 4
 	}, {
-		//도착지
 		type: "plane",
 		x: -6,
 		y: 6.01,
 		z: -6,
 		sz: 1.3333,
 		sx: 1.3333,
-		materialId: "m2"
+		materialId: "m5"
 	}, {
-		//왼쪽 아래 정사각형 앞 아치
 		type: "arc",
 		ry: Math.PI,
 		x: -4
-		
 	}, {
-		//계단 포함 기둥 옆면 (윗면 x)
 		z: 5.5,
 		sz: 2,
 		sy: 3,
 		y: -1
 	}, {
-		//계단 아래 땅 아랫면 (윗면 x)
 		y: -2,
 		z: 6,
 		x: 1.5,
 		sx: 2
 	}, {
-		//돌아가는 길 아래 아치
 		type: "arc",
 		ry: -Math.PI / 2,
 		z: 4
 	}, {
-		//맨 오른쪽 아래 기둥
 		type: "stick",
 		y: 2.5,
 		z: -6,
 		d: 1,
 		height: 4
 	}, {
-		//오른쪽 아래에서 두번째
 		type: "stick",
 		y: 2.5,
 		z: -6,
 		d: 2,
 		height: 4
 	}, {
-		//오른쪽 아래에서 세번째의 위?
 		type: "stick",
-
 		y: 4,
 		z: -6,
 		d: 3,
 		height: 1
 	}, {
-		//오른쪽 아래에서 세번째의 아래
 		type: "stick",
 		x: 7,
 		y: 9,
@@ -290,7 +264,6 @@ var map = {
 		d: 3,
 		height: 3
 	}, {
-		//?? 안바뀜
 		type: "tri",
 		x: 6.6,
 		y: 10.6,
@@ -300,7 +273,6 @@ var map = {
 		sy: 0.1,
 		rz: Math.PI
 	}, {
-		//얘도 안바뀜
 		type: "stick",
 		y: 2.5,
 		z: -6,
@@ -311,32 +283,26 @@ var map = {
 		y: 9,
 		z: -6,
 		ry: Math.PI / 4,
-		
 		materialArr: [ "mRoof", "mRoof" ]
-	
 	}, {
-		//오른쪽 맨 위 첫번째
 		type: "stick",
 		y: 7.5,
 		z: -6,
 		d: 1,
 		height: 2
 	}, {
-		//오른쪽 맨 위 두번째
 		type: "stick",
 		y: 7.5,
 		z: -6,
 		d: 2,
 		height: 2
 	}, {
-		//오른쪽 맨 위 세번째
 		type: "stick",
 		y: 7.5,
 		z: -6,
 		d: 3,
 		height: 2
 	}, {
-		//안바껴유
 		type: "stick",
 		y: 7.5,
 		z: -6,
@@ -349,28 +315,24 @@ var map = {
 		ry: Math.PI / 4,
 		materialArr: [ "mRoof", "mRoof" ]
 	}, {
-		//기둥무리 맨 왼쪽에서 오른쪽 위의 첫번째
 		type: "stick",
 		y: 7.5,
 		x: -6,
 		d: 1,
 		height: 2
 	}, {
-		//기둥무리 맨 왼쪽에서 오른쪽 위의 두번째
 		type: "stick",
 		y: 7.5,
 		x: -6,
 		d: 2,
 		height: 2
 	}, {
-		//기둥무리 맨 왼쪽에서 오른쪽 위의 세번째
 		type: "stick",
 		y: 7.5,
 		x: -6,
 		d: 3,
 		height: 2
 	}, {
-		//ㅋㅋ
 		type: "stick",
 		y: 7.5,
 		x: -6,
@@ -384,7 +346,6 @@ var map = {
 		ry: Math.PI / 4,
 		materialArr: [ "mRoof", "mRoof" ]
 	}, {
-		//기둥무리 가운데 위 오른쪽에서 첫번째
 		type: "stick",
 		y: 7.5,
 		x: -6,
@@ -392,7 +353,6 @@ var map = {
 		d: 1,
 		height: 2
 	}, {
-		//기둥무리 가운데 위 오른쪽에서 두번째
 		type: "stick",
 		y: 7.5,
 		x: -6,
@@ -400,7 +360,6 @@ var map = {
 		d: 2,
 		height: 2
 	}, {
-		//기둥무리 가운데 위 오른쪽에서 세번째
 		type: "stick",
 		y: 7.5,
 		x: -6,
@@ -408,7 +367,6 @@ var map = {
 		d: 3,
 		height: 2
 	}, {
-		//ㅋ
 		type: "stick",
 		y: 7.5,
 		x: -6,
@@ -416,7 +374,6 @@ var map = {
 		d: 0,
 		height: 2
 	}, {
-		//버튼
 		type: "roundRect",
 		id: "btn1",
 		y: -1.9,
@@ -437,189 +394,7 @@ var map = {
 		z: -6,
 		height: 4,
 		id: "key"
-	},{
-		type: "tree1",
-		sx: 1,
-		sy: 1,
-		sz: 1,
-		x: 6,
-		y: 2,
-		z: -4,
-		height: 4,
-		id: "tree1"
-	},{
-		type: "tree1",
-		sx: 1,
-		sy: 1,
-		sz: 1,
-		x: 5,
-		y: 5,
-		z: 15,
-		height: 4,
-		id: "tree1"
-	},{
-		type: "tree2",
-		sx: 1,
-		sy: 1,
-		sz: 1,
-		x: -7,
-		y: -1,
-		z: 3,
-		height: 4,
-		id: "tree2"
-	},
-	{
-		type: "tree2",
-		sx: 1,
-		sy: 1,
-		sz: 1,
-		x: 17.5,
-		y: 9,
-		z: 4,
-		height: 4,
-		id: "tree2"
-	},{
-		type: "tree3",
-		sx: 1,
-		sy: 1,
-		sz: 1,
-		x: 10,
-		y: 5,
-		z: 3,
-		height: 4,
-		id: "tree3"
-	},
-	{
-		type: "grass2",
-		sx: 1,
-		sy: 1,
-		sz: 1,
-		x: 15.5,
-		y: 1,
-		z: 4,
-		height: 4,
-		id: "grass2"
-	},{
-		type: "grass2",
-		sx: 1,
-		sy: 1,
-		sz: 1,
-		x: -0.2,
-		y: -6,
-		z: 7.5,
-		height: 4,
-		id: "grass2"
-	},
-	{
-		type: "grass2",
-		sx: 1,
-		sy: 1,
-		sz: 1,
-		x: 24,
-		y: 3,
-		z: 10,
-		height: 4,
-		id: "grass2"
-	},
-	{
-		type: "flower1",
-		sx: 1,
-		sy: 1,
-		sz: 1,
-		x: 6,
-		y: -9.5,
-		z: 18,
-		height: 4,
-		id: "flower1"
-	},
-	{
-		type: "flower1",
-		sx: 1,
-		sy: 1,
-		sz: 1,
-		x: 30,
-		y: 5.5,
-		z: 22,
-		height: 4,
-		id: "flower1"
-	},{
-		type: "flower1",
-		sx: 1,
-		sy: 1,
-		sz: 1,
-		x: 31,
-		y: 4.5,
-		z: 27,
-		height: 4,
-		id: "flower1"
-	},	
-	{
-		type: "stone1",
-		sx: 1,
-		sy: 1,
-		sz: 1,
-		x: 11,
-		y: 3,
-		z: 13.5,
-		height: 4,
-		id: "stone1"
-	},{
-		type: "stone2",
-		sx: 1,
-		sy: 1,
-		sz: 1,
-		x: 34.5,
-		y: 19.3,
-		z: 17,
-		height: 4,
-		id: "stone2"
-	},{
-		type: "mushroom1",
-		sx: 1,
-		sy: 1,
-		sz: 1,
-		x: 9,
-		y: -1.5,
-		z: 0,
-		height: 4,
-		id: "mushroom1"
-	},{
-		type: "bird1",
-		sx: 4.5,
-		sy: 4.5,
-		sz: 4.5,
-		x: 1.5,
-		y: 10.5,
-		z: -6,
-		height: 4,
-		id: "bird1"
-	},{
-		type: "bird2",
-		sx: 4.5,
-		sy: 4.5,
-		sz: 4.5,
-		x: -24,
-		y: -5,
-		z: -6,
-		height: 4,
-		id: "bird2"
-	},
-
-	{
-		type: "bird3",
-		sx: 4.5,
-		sy: 4.5,
-		sz: 4.5,
-		x: 6,
-		y: 8,
-		z: -6,
-		height: 4,
-		id: "bird3"
-	},
-	
-
-	 {
-		//돌아가는 다리
+	}, {
 		type: "group",
 		id: "bridge",
 		children: [ {
@@ -662,8 +437,7 @@ var map = {
 			sy: 8,
 			sz: 1.3,
 			y: -5
-		} ,
-	]
+		} ]
 	}, {
 		type: "turntabley",
 		id: "turn",
@@ -781,26 +555,20 @@ var map = {
 	materials: {
 		m0: {
 			type: "L",
-			color: 0x666666, //0xdad282
-			mapId: "img/tree_texture3.jpg"
-
+			color: 0xdad282
 		},
 		m1: {
 			type: "L",
-			color: 0x777777, //0xdad282
-			mapId: "img/tree_texture3.jpg"
-
+			color: 0xafa862
 		},
 		m2: {
 			type: "L",
-			color: 0x82734C//0xff6600 //조작기둥 주황색
-
+			color: 0xff6600
 		},
 		m3: {
 			type: "L",
 			color: 0xffffff,
-			mapId: "img/level2ground_v4.png"
-			//mapId: "img/forest.png"
+			mapId: "img/level2ground.png"
 		},
 		m4: {
 			type: "B",
@@ -815,28 +583,17 @@ var map = {
 			color: 0xff8822,
 			mapId: "img/endPoint.png"
 		},
-		//배경에 사진 넣기
-		m6: {
-			type: "L",
-			color: 0xffffff,
-			mapId: "img/forest.png"
-			//mapId: "img/forest.png"
-		},
 		mRoof: {
 			type: "L",
 			color: 0xf7b41f
 		},
 		st: {
 			type: "L",
-			color: 0x82734C,
+			color: 0x444444,
 		}
 	},
 	textures: [ "img/path/texture0.jpg", "img/common/border.png",
-		"img/level2ground.png", "img/null.png", "img/endPoint.png","img/level1ground.png","img/trees.png",
-		"img/forest.png","img/tree_texture.jpg", "img/tree_texture2.jpg", "img/level2ground2.png",
-		"img/grass_texture.jpg", "img/grass_texture2.jpg", "img/level2ground_v2.png", "img/level2ground_v3.png",
-		"img/level2ground_v4.png", "img/tree_texture3.jpg","img/rock_texture.jpg", "img/sand_texture.jpg",
-		"img/sand_texture2.jpg",
+		"img/level2ground.png", "img/null.png", "img/endPoint.png"
 	],
 	lights: [ {
 			key: "areaLight",
@@ -1081,7 +838,6 @@ var map = {
 						.delay( 200 )
 						.start()
 						.onComplete( function() {
-							//새로 생기는 다리들
 							var cube = app.world.meshFactory.createCube( {
 								x: -1,
 								y: -4.6,
@@ -1301,7 +1057,6 @@ var map = {
 															.start()
 															.onComplete( function() {
 																app.world.childrenWithId.turn.becomeAble();
-																//위로 올라가면 새로 생기는 통로 /////
 																tri.material = app.world.data.materials.m0;
 																if ( app.world.childrenWithId[ "bridge" ].rotation.y ==
 																	Math.PI * 1.5 ) {
