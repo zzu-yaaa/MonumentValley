@@ -11,16 +11,16 @@ var map = {
 			y: 0.15
 		}, {
 			type: "text",
-			text: "第二章",
-			family: "微软雅黑",
+			text: "Chapter 2",
+			family: "Bold",
 			size: 0.035,
 			y: 0.27,
 			color: "#ffffff",
 			weight: "bolder"
 		}, {
 			type: "text",
-			text: "花园",
-			family: "微软雅黑",
+			text: "Forest",
+			family: "bold",
 			size: 0.07,
 			y: 0.37,
 			color: "#ffffff",
@@ -28,31 +28,31 @@ var map = {
 		}, {
 			type: "text",
 			text: "─────",
-			family: "微软雅黑",
+			family: "bold",
 			size: 0.02,
 			y: 0.45,
 			color: "#ffffff",
 			weight: "bold"
 		}, {
 			type: "text",
-			text: "在此",
-			family: "微软雅黑",
+			text: "부제",
+			family: "bold",
 			size: 0.03,
 			y: 0.5,
 			color: "#ffffff",
 			weight: "bolder"
 		}, {
 			type: "text",
-			text: "我要向",
-			family: "微软雅黑",
+			text: "숲속에서",
+			family: "bold",
 			size: 0.04,
 			y: 0.625,
 			color: "#ffffff",
 			weight: "bold"
 		}, {
 			type: "text",
-			text: "纪念碑谷致敬",
-			family: "微软雅黑",
+			text: "",
+			family: "bold",
 			size: 0.04,
 			y: 0.7,
 			color: "#ffffff",
