@@ -96,7 +96,7 @@ var map = {
 		width: 30,
 		height: 30,
 		x: 0,
-		y: -3,
+		y: -4,
 		rx: -Math.PI / 2,
 		materialId: "m3"
 	}, {
@@ -435,7 +435,80 @@ var map = {
 		z: -6,
 		height: 4,
 		id: "key"
+	},{
+		type: "tree1",
+		sx: 1,
+		sy: 1,
+		sz: 1,
+		x: 6,
+		y: 2,
+		z: -4,
+		height: 4,
+		id: "tree1"
+	},{
+		type: "tree1",
+		sx: 1,
+		sy: 1,
+		sz: 1,
+		x: 5,
+		y: 5,
+		z: 15,
+		height: 4,
+		id: "tree1"
+	},{
+		type: "tree2",
+		sx: 1,
+		sy: 1,
+		sz: 1,
+		x: -7,
+		y: -1,
+		z: 3,
+		height: 4,
+		id: "tree2"
 	},
+	{
+		type: "tree2",
+		sx: 1,
+		sy: 1,
+		sz: 1,
+		x: 11,
+		y: 4,
+		z: 4,
+		height: 4,
+		id: "tree2"
+	},{
+		type: "grass2",
+		sx: 1,
+		sy: 1,
+		sz: 1,
+		x: 15.5,
+		y: 1,
+		z: 4,
+		height: 4,
+		id: "grass2"
+	},{
+		type: "grass2",
+		sx: 1,
+		sy: 1,
+		sz: 1,
+		x: -0.2,
+		y: -6,
+		z: 7.5,
+		height: 4,
+		id: "grass2"
+	},
+	{
+		type: "flower1",
+		sx: 1,
+		sy: 1,
+		sz: 1,
+		x: -2,
+		y: -13,
+		z: 12,
+		height: 4,
+		id: "flower1"
+	},
+
 	 {
 		//돌아가는 다리
 		type: "group",
