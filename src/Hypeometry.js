@@ -2,7 +2,6 @@
 export { DEFAULT_SETTINGS } from './settings.js';
 
 export { GameLevel } from './core/GameLevel.js';
-export { GameLevelForest } from './core/GameLevelForest.js';
 export { GraphPath } from './core/GraphPath.js';
 
 export { Charactor } from './element/Charactor.js';
