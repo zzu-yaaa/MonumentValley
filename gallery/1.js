@@ -87,6 +87,14 @@ var map = {
 		} ]
 	},
 	blocks: [ {
+		type: "ground",
+		width: 22,
+		height: 22,
+		x: 0,
+		y: -3,
+		rx: -Math.PI / 2,
+		materialId: "m3"
+	},{
 		type: "cube",
 		x: 0,
 		y: 0,

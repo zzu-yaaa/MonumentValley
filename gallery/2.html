@@ -49,6 +49,21 @@
       } );
 
       loadKey();
+      loadTree1();
+      loadTree2();
+      loadTree3();
+      loadGrass1();
+      loadGrass2();
+      loadFlower1();
+      loadBushes1();
+      loadStone1();
+      loadStone2();
+      loadMushroom1();
+      loadBird1();
+      loadBird2();
+      loadBird3();
+
+
       loadMusic();
 
       function loadMusic() {
@@ -79,13 +94,14 @@
 
       function loadKey() {
         var mtlLoader = new THREE.MTLLoader( level.loaderFactory.manager );
-        mtlLoader.setPath( 'models/key/' );
-        mtlLoader.load( 'meat on bone.mtl', ( materials ) => {
+        mtlLoader.setPath( 'models/bone/' );
+        mtlLoader.load( 'meatbone.mtl', ( materials ) => {
           materials.preload();
           var objLoader = new THREE.OBJLoader();
           objLoader.setMaterials( materials );
-          objLoader.setPath( 'models/key/' );
-          objLoader.load( 'meat on bone.obj', ( obj ) => {
+          objLoader.setPath( 'models/bone/' );
+          objLoader.load( 'meatbone.obj', ( obj ) => {
+
             level.meshFactory.addUserObjectCreator( "key", ( item, useless, container ) => {
               //let mesh = obj.children[1].clone(); children 0이 뼈다귀 1이 고기부분
               // 모든 자식을 병합한 객체
@@ -105,6 +121,401 @@
           } );
         } );
       }
+
+
+      function loadTree1() {
+        var mtlLoader = new THREE.MTLLoader( level. loaderFactory.manager );
+        mtlLoader.setPath( 'models/tree/' );
+        mtlLoader.load( 'tree1.mtl', ( materials ) => {
+          materials.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials( materials );
+          objLoader.setPath( 'models/tree/' );
+          objLoader.load( 'tree1.obj', ( obj ) => {
+            level.meshFactory.addUserObjectCreator( "tree1", ( item, useless, container ) => {
+              //let mesh = obj.children[ 0 ].clone();
+              // 모든 자식을 병합한 객체
+              let mergedObject = new THREE.Object3D();
+              // 병합된 객체에 모든 자식을 추가
+              for (let child of obj.children) {
+                  mergedObject.add(child.clone());
+              }
+              // 변경된 부분: 병합된 객체를 복제
+              let mesh = mergedObject.clone();
+              
+              mesh.scale.set( (item.sx || 1)*9, (item.sy || 1)*9, (item.sz || 1 )*9); //크기조절
+              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); //위치 조절
+              mesh.rotation.set( item.rx || 0, 300, item.rz || 0 );
+              container.add( mesh );
+              return mesh;
+            } );
+          } );
+        } );
+      }
+      
+      function loadTree2() {
+              var mtlLoader = new THREE.MTLLoader( level. loaderFactory.manager );
+              mtlLoader.setPath( 'models/tree/' );
+              mtlLoader.load( 'tree2.mtl', ( materials ) => {
+                materials.preload();
+                var objLoader = new THREE.OBJLoader();
+                objLoader.setMaterials( materials );
+                objLoader.setPath( 'models/tree/' );
+                objLoader.load( 'tree2.obj', ( obj ) => {
+                  level.meshFactory.addUserObjectCreator( "tree2", ( item, useless, container ) => {
+                    //let mesh = obj.children[ 0 ].clone();
+                    // 모든 자식을 병합한 객체
+                    let mergedObject = new THREE.Object3D();
+                    // 병합된 객체에 모든 자식을 추가
+                    for (let child of obj.children) {
+                        mergedObject.add(child.clone());
+                    }
+                    // 변경된 부분: 병합된 객체를 복제
+                    let mesh = mergedObject.clone();
+                    
+                    mesh.scale.set( (item.sx || 1)*9, (item.sy || 1)*9, (item.sz || 1 )*9); //크기조절
+                    mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); //위치 조절
+                    mesh.rotation.set( item.rx || 0, 300, item.rz || 0 );
+                    container.add( mesh );
+                    return mesh;
+                  } );
+                } );
+              } );
+            }
+
+      function loadTree3() {
+        var mtlLoader = new THREE.MTLLoader( level. loaderFactory.manager );
+        mtlLoader.setPath( 'models/tree/' );
+        mtlLoader.load( 'tree4.mtl', ( materials ) => {
+          materials.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials( materials );
+          objLoader.setPath( 'models/tree/' );
+          objLoader.load( 'tree4.obj', ( obj ) => {
+            level.meshFactory.addUserObjectCreator( "tree3", ( item, useless, container ) => {
+              //let mesh = obj.children[ 0 ].clone();
+              // 모든 자식을 병합한 객체
+              let mergedObject = new THREE.Object3D();
+              // 병합된 객체에 모든 자식을 추가
+              for (let child of obj.children) {
+                  mergedObject.add(child.clone());
+              }
+              // 변경된 부분: 병합된 객체를 복제
+              let mesh = mergedObject.clone();
+              
+              mesh.scale.set( (item.sx || 1)*20, (item.sy || 1)*20, (item.sz || 1 )*20); //크기조절
+              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); //위치 조절
+              mesh.rotation.set( item.rx || 0, 300, item.rz || 0 );
+              container.add( mesh );
+              return mesh;
+            } );
+          } );
+        } );
+      }
+      
+
+      function loadGrass1() {
+        var mtlLoader = new THREE.MTLLoader( level. loaderFactory.manager );
+        mtlLoader.setPath( 'models/tree/' );
+        mtlLoader.load( 'grass1.mtl', ( materials ) => {
+          materials.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials( materials );
+          objLoader.setPath( 'models/tree/' );
+          objLoader.load( 'grass1.obj', ( obj ) => {
+            level.meshFactory.addUserObjectCreator( "grass1", ( item, useless, container ) => {
+              //let mesh = obj.children[ 0 ].clone();
+              // 모든 자식을 병합한 객체
+              let mergedObject = new THREE.Object3D();
+              // 병합된 객체에 모든 자식을 추가
+              for (let child of obj.children) {
+                  mergedObject.add(child.clone());
+              }
+              // 변경된 부분: 병합된 객체를 복제
+              let mesh = mergedObject.clone();
+              
+              mesh.scale.set( (item.sx || 1)*200, (item.sy || 1)*100, (item.sz || 1 )*100); //크기조절
+              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); //위치 조절
+              mesh.rotation.set( item.rx || 0, 300, item.rz || 0 );
+              container.add( mesh );
+              return mesh;
+            } );
+          } );
+        } );
+      }
+
+      function loadGrass2() {
+        var mtlLoader = new THREE.MTLLoader( level. loaderFactory.manager );
+        mtlLoader.setPath( 'models/tree/' );
+        mtlLoader.load( 'grass2.mtl', ( materials ) => {
+          materials.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials( materials );
+          objLoader.setPath( 'models/tree/' );
+          objLoader.load( 'grass2.obj', ( obj ) => {
+            level.meshFactory.addUserObjectCreator( "grass2", ( item, useless, container ) => {
+              //let mesh = obj.children[ 0 ].clone();
+              // 모든 자식을 병합한 객체
+              let mergedObject = new THREE.Object3D();
+              // 병합된 객체에 모든 자식을 추가
+              for (let child of obj.children) {
+                  mergedObject.add(child.clone());
+              }
+              // 변경된 부분: 병합된 객체를 복제
+              let mesh = mergedObject.clone();
+              
+              mesh.scale.set( (item.sx || 1)*30, (item.sy || 1)*30, (item.sz || 1 )*30); //크기조절
+              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); //위치 조절
+              mesh.rotation.set( item.rx || 0, 300, item.rz || 0 );
+              container.add( mesh );
+              return mesh;
+            } );
+          } );
+        } );
+      }
+
+      function loadFlower1() {  
+        var mtlLoader = new THREE.MTLLoader( level. loaderFactory.manager );
+        mtlLoader.setPath( 'models/tree/' );
+        mtlLoader.load( 'flower1.mtl', ( materials ) => {
+          materials.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials( materials );
+          objLoader.setPath( 'models/tree/' );
+          objLoader.load( 'flower1.obj', ( obj ) => {
+            level.meshFactory.addUserObjectCreator( "flower1", ( item, useless, container ) => {
+              //let mesh = obj.children[ 0 ].clone();
+              // 모든 자식을 병합한 객체
+              let mergedObject = new THREE.Object3D();
+              // 병합된 객체에 모든 자식을 추가
+              for (let child of obj.children) {
+                  mergedObject.add(child.clone());
+              }
+              // 변경된 부분: 병합된 객체를 복제
+              let mesh = mergedObject.clone();
+              
+              mesh.scale.set( (item.sx || 1)*60, (item.sy || 1)*60, (item.sz || 1 )*60); //크기조절
+              mesh.position.set( (item.x * size || 0) , (item.y * size || 0),  item.z *size || 0 ); //위치 조절
+              mesh.rotation.set( item.rx || 0, 300, item.rz || 0 );
+              container.add( mesh );
+              return mesh;
+            } );
+          } );
+        } );
+      }
+      
+      function loadBushes1() {
+        var mtlLoader = new THREE.MTLLoader( level. loaderFactory.manager );
+        mtlLoader.setPath( 'models/tree/' );
+        mtlLoader.load( 'bushes3.mtl', ( materials ) => {
+          materials.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials( materials );
+          objLoader.setPath( 'models/tree/' );
+          objLoader.load( 'bushes3.obj', ( obj ) => {
+            level.meshFactory.addUserObjectCreator( "bushes1", ( item, useless, container ) => {
+              //let mesh = obj.children[ 0 ].clone();
+              // 모든 자식을 병합한 객체
+              let mergedObject = new THREE.Object3D();
+              // 병합된 객체에 모든 자식을 추가
+              for (let child of obj.children) {
+                  mergedObject.add(child.clone());
+              }
+              // 변경된 부분: 병합된 객체를 복제
+              let mesh = mergedObject.clone();
+              
+              mesh.scale.set( (item.sx || 1)*15, (item.sy || 1)*15, (item.sz || 1 )*15); //크기조절
+              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); //위치 조절
+              mesh.rotation.set( item.rx || 0, 300, item.rz || 0 );
+              container.add( mesh );
+              return mesh;
+            } );
+          } );
+        } );
+      }
+      
+      function loadStone1() {
+        var mtlLoader = new THREE.MTLLoader( level. loaderFactory.manager );
+        mtlLoader.setPath( 'models/tree/' );
+        mtlLoader.load( 'stone1.mtl', ( materials ) => {
+          materials.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials( materials );
+          objLoader.setPath( 'models/tree/' );
+          objLoader.load( 'stone1.obj', ( obj ) => {
+            level.meshFactory.addUserObjectCreator( "stone1", ( item, useless, container ) => {
+              //let mesh = obj.children[ 0 ].clone();
+              // 모든 자식을 병합한 객체
+              let mergedObject = new THREE.Object3D();
+              // 병합된 객체에 모든 자식을 추가
+              for (let child of obj.children) {
+                  mergedObject.add(child.clone());
+              }
+              // 변경된 부분: 병합된 객체를 복제
+              let mesh = mergedObject.clone();
+              
+              mesh.scale.set( (item.sx || 1)*30, (item.sy || 1)*30, (item.sz || 1 )*30); //크기조절
+              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); //위치 조절
+              mesh.rotation.set( item.rx || 0, 230, item.rz || 0 );
+              container.add( mesh );
+              return mesh;
+            } );
+          } );
+        } );
+      }
+      
+      function loadStone2() {
+        var mtlLoader = new THREE.MTLLoader( level. loaderFactory.manager );
+        mtlLoader.setPath( 'models/tree/' );
+        mtlLoader.load( 'stone2.mtl', ( materials ) => {
+          materials.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials( materials );
+          objLoader.setPath( 'models/tree/' );
+          objLoader.load( 'stone2.obj', ( obj ) => {
+            level.meshFactory.addUserObjectCreator( "stone2", ( item, useless, container ) => {
+              //let mesh = obj.children[ 0 ].clone();
+              // 모든 자식을 병합한 객체
+              let mergedObject = new THREE.Object3D();
+              // 병합된 객체에 모든 자식을 추가
+              for (let child of obj.children) {
+                  mergedObject.add(child.clone());
+              }
+              // 변경된 부분: 병합된 객체를 복제
+              let mesh = mergedObject.clone();
+              
+              mesh.scale.set( (item.sx || 1)*20, (item.sy || 1)*20, (item.sz || 1 )*20); //크기조절
+              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); //위치 조절
+              mesh.rotation.set( item.rx || 0, 300, item.rz || 0 );
+              container.add( mesh );
+              return mesh;
+            } );
+          } );
+        } );
+      }
+      
+      function loadMushroom1() {
+        var mtlLoader = new THREE.MTLLoader( level. loaderFactory.manager );
+        mtlLoader.setPath( 'models/tree/' );
+        mtlLoader.load( 'mushroom3.mtl', ( materials ) => {
+          materials.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials( materials );
+          objLoader.setPath( 'models/tree/' );
+          objLoader.load( 'mushroom3.obj', ( obj ) => {
+            level.meshFactory.addUserObjectCreator( "mushroom1", ( item, useless, container ) => {
+              //let mesh = obj.children[ 0 ].clone();
+              // 모든 자식을 병합한 객체
+              let mergedObject = new THREE.Object3D();
+              // 병합된 객체에 모든 자식을 추가
+              for (let child of obj.children) {
+                  mergedObject.add(child.clone());
+              }
+              // 변경된 부분: 병합된 객체를 복제
+              let mesh = mergedObject.clone();
+              
+              mesh.scale.set( (item.sx || 1)*12, (item.sy || 1)*12, (item.sz || 1 )*12); //크기조절
+              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); //위치 조절
+              mesh.rotation.set( item.rx || 0, 260, item.rz || 0 );
+              container.add( mesh );
+              return mesh;
+            } );
+          } );
+        } );
+      }
+      
+
+      function loadBird1() {
+        var mtlLoader = new THREE.MTLLoader( level. loaderFactory.manager );
+        mtlLoader.setPath( 'models/else/' );
+        mtlLoader.load( 'bird1.mtl', ( materials ) => {
+          materials.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials( materials );
+          objLoader.setPath( 'models/else/' );
+          objLoader.load( 'bird1.obj', ( obj ) => {
+            level.meshFactory.addUserObjectCreator( "bird1", ( item, useless, container ) => {
+              //let mesh = obj.children[ 0 ].clone();
+              // 모든 자식을 병합한 객체
+              let mergedObject = new THREE.Object3D();
+              // 병합된 객체에 모든 자식을 추가
+              for (let child of obj.children) {
+                  mergedObject.add(child.clone());
+              }
+              // 변경된 부분: 병합된 객체를 복제
+              let mesh = mergedObject.clone();
+              
+              mesh.scale.set( (item.sx || 1)*100, (item.sy || 1)*100, (item.sz || 1 )*100); //크기조절
+              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); //위치 조절
+              mesh.rotation.set( item.rx || 0, (item.ry || 0)+50 , item.rz || 0 );
+              container.add( mesh );
+              return mesh;
+            } );
+          } );
+        } );
+      }
+      
+      
+      function loadBird2() {
+        var mtlLoader = new THREE.MTLLoader( level. loaderFactory.manager );
+        mtlLoader.setPath( 'models/else/' );
+        mtlLoader.load( 'bird3.mtl', ( materials ) => {
+          materials.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials( materials );
+          objLoader.setPath( 'models/else/' );
+          objLoader.load( 'bird3.obj', ( obj ) => {
+            level.meshFactory.addUserObjectCreator( "bird2", ( item, useless, container ) => {
+              //let mesh = obj.children[ 0 ].clone();
+              // 모든 자식을 병합한 객체
+              let mergedObject = new THREE.Object3D();
+              // 병합된 객체에 모든 자식을 추가
+              for (let child of obj.children) {
+                  mergedObject.add(child.clone());
+              }
+              // 변경된 부분: 병합된 객체를 복제
+              let mesh = mergedObject.clone();
+              
+              mesh.scale.set( (item.sx || 1)*25, (item.sy || 1)*25, (item.sz || 1 )*25); //크기조절
+              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); //위치 조절
+              mesh.rotation.set( item.rx || 0, (item.ry || 0)+20 , item.rz || 0 );
+              container.add( mesh );
+              return mesh;
+            } );
+          } );
+        } );
+      }
+      
+      function loadBird3() {
+        var mtlLoader = new THREE.MTLLoader( level. loaderFactory.manager );
+        mtlLoader.setPath( 'models/else/' );
+        mtlLoader.load( 'bird3.mtl', ( materials ) => {
+          materials.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials( materials );
+          objLoader.setPath( 'models/else/' );
+          objLoader.load( 'bird3.obj', ( obj ) => {
+            level.meshFactory.addUserObjectCreator( "bird3", ( item, useless, container ) => {
+              //let mesh = obj.children[ 0 ].clone();
+              // 모든 자식을 병합한 객체
+              let mergedObject = new THREE.Object3D();
+              // 병합된 객체에 모든 자식을 추가
+              for (let child of obj.children) {
+                  mergedObject.add(child.clone());
+              }
+              // 변경된 부분: 병합된 객체를 복제
+              let mesh = mergedObject.clone();
+              
+              mesh.scale.set( (item.sx || 1)*25, (item.sy || 1)*25, (item.sz || 1 )*25); //크기조절
+              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); //위치 조절
+              mesh.rotation.set( item.rx || 0, (item.ry || 0)+50 , item.rz || 0 );
+              container.add( mesh );
+              return mesh;
+            } );
+          } );
+        } );
+      }
+
 
       let loader = new THREE.ColladaLoader( level.loaderFactory.manager );
       loader.load( 'models/Mario/mario.dae', function( collada ) {

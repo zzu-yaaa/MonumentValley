@@ -79,13 +79,13 @@
 
       function loadKey() {
         var mtlLoader = new THREE.MTLLoader( level.loaderFactory.manager );
-        mtlLoader.setPath( 'models/key/' );
-        mtlLoader.load( 'mariokey.mtl', ( materials ) => {
+        mtlLoader.setPath( 'models/bone/' );
+        mtlLoader.load( 'meatbone.mtl', ( materials ) => {
           materials.preload();
           var objLoader = new THREE.OBJLoader();
           objLoader.setMaterials( materials );
-          objLoader.setPath( 'models/key/' );
-          objLoader.load( 'mariokey.obj', ( obj ) => {
+          objLoader.setPath( 'models/bone/' );
+          objLoader.load( 'meatbone.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "key", ( item, useless, container ) => {
               let mesh = obj.children[ 0 ].clone();
               mesh.scale.set( item.sx || 1, item.sy || 1, item.sz || 1 );
