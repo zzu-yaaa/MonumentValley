@@ -1163,13 +1163,16 @@ var map = {
 			neighbors: [ "p29" ],
 			materialId: "m4",
 			hasCome: function() {
-				setTimeout( () => {
-					app.world.scene.remove( app.world.childrenWithId.key );
-					app.world.charactor.play( 'win' );
-					app.world.winSound.play();
-				} );
+			   setTimeout( () => {
+				  app.world.scene.remove( app.world.childrenWithId.key );
+				  app.world.winSound.play();
+				  app.world.charactor.play( 'win' );
+				  setTimeout(() => {
+					 window.location.href = '2.html';
+					}, 4000);
+			   } );
 			}
-		},
+		 },
 		"p31": {
 			id: "p31",
 			x: 3,
