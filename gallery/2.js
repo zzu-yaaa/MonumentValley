@@ -471,12 +471,23 @@ var map = {
 		sx: 1,
 		sy: 1,
 		sz: 1,
-		x: 11,
-		y: 4,
+		x: 17.5,
+		y: 9,
 		z: 4,
 		height: 4,
 		id: "tree2"
 	},{
+		type: "tree3",
+		sx: 1,
+		sy: 1,
+		sz: 1,
+		x: 10,
+		y: 5,
+		z: 3,
+		height: 4,
+		id: "tree3"
+	},
+	{
 		type: "grass2",
 		sx: 1,
 		sy: 1,
@@ -498,15 +509,68 @@ var map = {
 		id: "grass2"
 	},
 	{
+		type: "grass2",
+		sx: 1,
+		sy: 1,
+		sz: 1,
+		x: 24,
+		y: 3,
+		z: 10,
+		height: 4,
+		id: "grass2"
+	},
+	{
 		type: "flower1",
 		sx: 1,
 		sy: 1,
 		sz: 1,
-		x: -2,
-		y: -13,
-		z: 12,
+		x: 6,
+		y: -9.5,
+		z: 18,
 		height: 4,
 		id: "flower1"
+	},
+	{
+		type: "flower1",
+		sx: 1,
+		sy: 1,
+		sz: 1,
+		x: 30,
+		y: 5.5,
+		z: 22,
+		height: 4,
+		id: "flower1"
+	},{
+		type: "flower1",
+		sx: 1,
+		sy: 1,
+		sz: 1,
+		x: 31,
+		y: 4.5,
+		z: 27,
+		height: 4,
+		id: "flower1"
+	},	
+	{
+		type: "stone1",
+		sx: 1,
+		sy: 1,
+		sz: 1,
+		x: 11,
+		y: 3,
+		z: 13.5,
+		height: 4,
+		id: "stone1"
+	},{
+		type: "stone2",
+		sx: 1,
+		sy: 1,
+		sz: 1,
+		x: 34.5,
+		y: 19.3,
+		z: 17,
+		height: 4,
+		id: "stone2"
 	},
 
 	 {
