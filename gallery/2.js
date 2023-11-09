@@ -571,7 +571,50 @@ var map = {
 		z: 17,
 		height: 4,
 		id: "stone2"
+	},{
+		type: "mushroom1",
+		sx: 1,
+		sy: 1,
+		sz: 1,
+		x: 9,
+		y: -1.5,
+		z: 0,
+		height: 4,
+		id: "mushroom1"
+	},{
+		type: "bird1",
+		sx: 4.5,
+		sy: 4.5,
+		sz: 4.5,
+		x: 1.5,
+		y: 10.5,
+		z: -6,
+		height: 4,
+		id: "bird1"
+	},{
+		type: "bird2",
+		sx: 4.5,
+		sy: 4.5,
+		sz: 4.5,
+		x: -24,
+		y: -5,
+		z: -6,
+		height: 4,
+		id: "bird2"
 	},
+
+	{
+		type: "bird3",
+		sx: 4.5,
+		sy: 4.5,
+		sz: 4.5,
+		x: 6,
+		y: 8,
+		z: -6,
+		height: 4,
+		id: "bird3"
+	},
+	
 
 	 {
 		//돌아가는 다리
