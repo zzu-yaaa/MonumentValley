@@ -1,3 +1,4 @@
+var a = 2.5;
 var map = {
 	levelBoard: {
 		life: 2500,
@@ -10,16 +11,16 @@ var map = {
 			y: 0.15
 		}, {
 			type: "text",
-			text: "Chapter 1",
-			family: "bold",
+			text: "제 1장",
+			family: "맑은 고딕",
 			size: 0.035,
 			y: 0.27,
 			color: "#ffffff",
 			weight: "bold"
 		}, {
 			type: "text",
-			text: "City",
-			family: "Bold",
+			text: "도시",
+			family: "맑은 고딕",
 			size: 0.07,
 			y: 0.37,
 			color: "#ffffff",
@@ -27,31 +28,31 @@ var map = {
 		}, {
 			type: "text",
 			text: "─────",
-			family: "bold",
+			family: "맑은 고딕",
 			size: 0.02,
 			y: 0.45,
 			color: "#ffffff",
 			weight: "normal"
 		}, {
 			type: "text",
-			text: "부제",
-			family: "bold",
+			text: " ",
+			family: "맑은 고딕",
 			size: 0.03,
 			y: 0.5,
 			color: "#ffffff",
 			weight: "bold"
 		}, {
 			type: "text",
-			text: "도시를 떠나자",
-			family: "bold",
+			text: " ",
+			family: "맑은 고딕",
 			size: 0.04,
 			y: 0.625,
 			color: "#ffffff",
 			weight: "normal"
 		}, {
 			type: "text",
-			text: "",
-			family: "bold",
+			text: "Thanks to MonumentValley",
+			family: "맑은 고딕",
 			size: 0.04,
 			y: 0.7,
 			color: "#ffffff",
@@ -73,8 +74,8 @@ var map = {
 			y: 0.15
 		}, {
 			type: "text",
-			text: "완성",
-			family: "bold",
+			text: "完成",
+			family: "맑은 고딕",
 			size: 0.06,
 			y: 0.5,
 			color: "#ffffff",
@@ -87,14 +88,6 @@ var map = {
 		} ]
 	},
 	blocks: [ {
-		type: "ground",
-		width: 22,
-		height: 22,
-		x: 0,
-		y: -3,
-		rx: -Math.PI / 2,
-		materialId: "m3"
-	},{
 		type: "cube",
 		x: 0,
 		y: 0,
@@ -103,7 +96,16 @@ var map = {
 		ry: 0,
 		rz: 0,
 		materialId: "m0"
-	}, {
+	}, 
+	{
+		type: "ground",
+		width:  30,
+		height: 30,
+		x: 3,
+		y: -1,
+		rx: -Math.PI / 2,
+		materialId: "m3"
+	},{
 		x: 1
 	}, {
 		x: 2
@@ -176,7 +178,7 @@ var map = {
 		y: 12,
 		z: 8,
 		d: 0,
-		height: 7
+		height: 7,
 	}, {
 		type: "stick",
 		x: 6,
@@ -231,17 +233,393 @@ var map = {
 		y: 20,
 		z: 2,
 		height: 4
-	}, {
+	}, 
+	//{
+	// 	type: "moon",
+	// 	sx: 8,
+	// 	sy: 8,
+	// 	sz: 8,
+	// 	x: 6,
+	// 	y: 20.5,
+	// 	z: 2,
+	// 	height: 4,
+	// 	id: "moon"
+	// }, 
+	{
 		type: "key",
-		sx: 4.5,
-		sy: 4.5,
-		sz: 4.5,
+		sx: 15,
+		sy: 15,
+		sz: 15,
 		x: 6,
-		y: 20.5,
+		y: 21,
 		z: 2,
 		height: 4,
 		id: "key"
-	}, {
+	}, 
+	// {
+	// 	type: "building_2",
+	// 	sx: 7,
+	// 	sy: 7,
+	// 	sz: 7,
+	// 	x: 10,
+	// 	y: 12,
+	// 	z: 15,
+	// 	height: 4,
+	// 	id: "building_2"
+	// },
+	{
+		type: "building_3",
+		sx: 0.1,
+		sy: 0.1,
+		sz: 0.1,
+		x: 5,
+		y: 10,
+		z: 20,
+		height: 4,
+		id: "building_3"
+	},
+	// {
+	// 	type: "aircraft",
+	// 	sx: 1,
+	// 	sy: 1,
+	// 	sz: 1,
+	// 	x: 25,
+	// 	y: 30,
+	// 	z: 16,
+	// 	height: 4,
+	// 	id: "aircraft"
+	// },
+	// {
+	// 	type: "cartoon_car",
+	// 	sx: 1,
+	// 	sy: 1,
+	// 	sz: 1,
+	// 	x: 30,
+	// 	y: 30,
+	// 	z: 16,
+	// 	height: 4,
+	// 	id: "cartoon_car"
+	// }
+	{
+		type: "balloon",
+		sx: 24,
+		sy: 24,
+		sz: 24,
+		x: 10,
+		y: 26,
+		z: 16,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 17,
+		sy: 17,
+		sz: 17,
+		x: 9.5,
+		y: 26,
+		z: 20,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 24,
+		sy: 24,
+		sz: 24,
+		x: 12,
+		y: 28,
+		z: 20,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 24,
+		sy: 24,
+		sz: 24,
+		x: 13-a,
+		y: 15,
+		z: 4,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 22,
+		sy: 22,
+		sz: 22,
+		x: 14-a,
+		y: 16,
+		z: 3,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 20,
+		sy: 20,
+		sz: 20,
+		x: 16-a,
+		y: 18,
+		z: 4,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 23,
+		sy: 23,
+		sz: 23,
+		x: 29-a,
+		y: 33,
+		z: 14,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 22,
+		sy: 22,
+		sz: 22,
+		x: 31-a,
+		y: 31,
+		z: 14,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 19,
+		sy: 19,
+		sz: 19,
+		x: 33-a,
+		y: 31,
+		z: 14,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 19,
+		sy: 19,
+		sz: 19,
+		x: 27-a,
+		y: 31,
+		z: 14,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 18,
+		sy: 18,
+		sz: 18,
+		x: 25-a,
+		y: 32,
+		z: 14,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 15,
+		sy: 15,
+		sz: 15,
+		x: 25-a,
+		y: 31,
+		z: 14,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 17,
+		sy: 17,
+		sz: 17,
+		x: 23-a,
+		y: 28,
+		z: 14,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 17,
+		sy: 17,
+		sz: 17,
+		x: 27,
+		y: 27.5,
+		z: 9,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 14,
+		sy: 14,
+		sz: 14,
+		x: 27,
+		y: 28,
+		z: 8,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 14,
+		sy: 14,
+		sz: 14,
+		x: 7,
+		y: 20,
+		z: 8,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 14,
+		sy: 14,
+		sz: 14,
+		x: 5,
+		y: 17,
+		z: 8,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 17,
+		sy: 17,
+		sz: 17,
+		x: 4,
+		y: 17,
+		z: 8,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 17,
+		sy: 17,
+		sz: 17,
+		x: 1,
+		y: 19,
+		z: 10,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 17,
+		sy: 17,
+		sz: 17,
+		x: 0,
+		y: 13,
+		z: 10,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 24,
+		sy: 24,
+		sz: 24,
+		x: -3,
+		y: 13,
+		z: 10,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 25,
+		sy: 25,
+		sz: 25,
+		x: -4,
+		y: 15,
+		z: 10,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 18,
+		sy: 18,
+		sz: 18,
+		x: -5,
+		y: 13,
+		z: 10,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "balloon",
+		sx: 25,
+		sy: 25,
+		sz: 25,
+		x: 4,
+		y: 17,
+		z: 10,
+		height: 4,
+		id: "balloon"
+	},
+	{
+		type: "paperPlane2",
+		sx: 25,
+		sy: 25,
+		sz: 25,
+		x: -5,
+		y: 5,
+		z: 10,
+		height: 4,
+		id: "paperPlane2"
+	},
+	{
+		type: "paperPlane",
+		sx: 25,
+		sy: 25,
+		sz: 25,
+		x: 28,
+		y: 20,
+		z: 8,
+		height: 4,
+		id: "paperPlane"
+	},
+	// {
+	// 	type: "paperPlane",
+	// 	sx: 27,
+	// 	sy: 27,
+	// 	sz: 27,
+	// 	x: 33,
+	// 	y: 34,
+	// 	z: 19,
+	// 	height: 4,
+	// 	id: "paperPlane"
+	// },
+	// {
+	// 	type: "paperPlane",
+	// 	sx: 27,
+	// 	sy: 27,
+	// 	sz: 27,
+	// 	x: 35,
+	// 	y: 39,
+	// 	z: 19,
+	// 	height: 4,
+	// 	id: "paperPlane"
+	// },
+	// {
+	// 	type: "paperPlane",
+	// 	sx: 27,
+	// 	sy: 27,
+	// 	sz: 27,
+	// 	x: 16,
+	// 	y: 35,
+	// 	z: 21,
+	// 	height: 4,
+	// 	id: "paperPlane"
+	// },
+	{
 		type: "turntablex",
 		id: "turn",
 		x: 8,
@@ -343,29 +721,32 @@ var map = {
 		m0: {
 			type: "L",
 			color: 0xffffff,
-			mapId: "img/path/brick.png"
+			mapId: "img/path/mm.png"
 		},
 		m1: {
 			type: "L",
-			color: 0xdddddd,
-			mapId: "img/path/brick2.png"
+			color: 0xcdffff,
+			mapId: "img/path/mm.png"
 		},
 		m2: {
 			type: "L",
-			color: 0xeea040
+			color: 0xaabfc2, // 끝
+			mapId:"img/path/holo3.jpg"
 		},
 		m22: {
 			type: "L",
-			color: 0xdd8020
+			color: 0xaabfc2, // 가운데
+			mapId:"img/path/holo3.jpg"
 		},
 		m222: {
 			type: "L",
-			color: 0xdd5000
+			color: 0xffffff, //막대
+			mapId:"img/path/holo.jpg"
 		},
 		m3: {
 			type: "L",
 			color: 0xffffff,
-			mapId: "img/level1ground.png"
+			mapId: "img/pt.png"
 		},
 		m4: {
 			type: "B",
@@ -379,9 +760,9 @@ var map = {
 			mapId: "img/endPoint.png"
 		}
 	},
-	textures: [ "img/path/brick.png", "img/path/brick2.png",
-		"img/common/border.png", "img/level1ground.png", "img/null.png",
-		"img/endPoint.png"
+	textures: [ "img/path/mm.png", "img/path/mm.png",
+		"img/common/border.png", "img/pt.png", "img/null.png",
+		"img/endPoint.png","img/path/holo.jpg","img/path/holo3.jpg"
 	],
 	lights: [ {
 			key: "areaLight",
@@ -782,16 +1163,16 @@ var map = {
 			neighbors: [ "p29" ],
 			materialId: "m4",
 			hasCome: function() {
-				setTimeout( () => {
-					app.world.scene.remove( app.world.childrenWithId.key );
-					app.world.winSound.play();
-					app.world.charactor.play( 'win' );
-					setTimeout(() => {
-						window.location.href = '2.html';
-					  }, 4000);
-				} );
+			   setTimeout( () => {
+				  app.world.scene.remove( app.world.childrenWithId.key );
+				  app.world.winSound.play();
+				  app.world.charactor.play( 'win' );
+				  setTimeout(() => {
+					 window.location.href = '2.html';
+					}, 4000);
+			   } );
 			}
-		},
+		 },
 		"p31": {
 			id: "p31",
 			x: 3,
@@ -944,3 +1325,5 @@ var map = {
 	},
 	startPoint: "p3"
 };
+
+
