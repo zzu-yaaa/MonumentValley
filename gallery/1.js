@@ -10,16 +10,16 @@ var map = {
 			y: 0.15
 		}, {
 			type: "text",
-			text: "第一章",
-			family: "微软雅黑",
+			text: "Chapter 1",
+			family: "bold",
 			size: 0.035,
 			y: 0.27,
 			color: "#ffffff",
 			weight: "bold"
 		}, {
 			type: "text",
-			text: "阶梯",
-			family: "微软雅黑",
+			text: "City",
+			family: "Bold",
 			size: 0.07,
 			y: 0.37,
 			color: "#ffffff",
@@ -27,31 +27,31 @@ var map = {
 		}, {
 			type: "text",
 			text: "─────",
-			family: "微软雅黑",
+			family: "bold",
 			size: 0.02,
 			y: 0.45,
 			color: "#ffffff",
 			weight: "normal"
 		}, {
 			type: "text",
-			text: "在此",
-			family: "微软雅黑",
+			text: "부제",
+			family: "bold",
 			size: 0.03,
 			y: 0.5,
 			color: "#ffffff",
 			weight: "bold"
 		}, {
 			type: "text",
-			text: "我要向",
-			family: "微软雅黑",
+			text: "도시를 떠나자",
+			family: "bold",
 			size: 0.04,
 			y: 0.625,
 			color: "#ffffff",
 			weight: "normal"
 		}, {
 			type: "text",
-			text: "纪念碑谷致敬",
-			family: "微软雅黑",
+			text: "",
+			family: "bold",
 			size: 0.04,
 			y: 0.7,
 			color: "#ffffff",
@@ -73,8 +73,8 @@ var map = {
 			y: 0.15
 		}, {
 			type: "text",
-			text: "完成",
-			family: "微软雅黑",
+			text: "완성",
+			family: "bold",
 			size: 0.06,
 			y: 0.5,
 			color: "#ffffff",
@@ -784,8 +784,11 @@ var map = {
 			hasCome: function() {
 				setTimeout( () => {
 					app.world.scene.remove( app.world.childrenWithId.key );
-					app.world.charactor.play( 'win' );
 					app.world.winSound.play();
+					app.world.charactor.play( 'win' );
+					setTimeout(() => {
+						window.location.href = '2.html';
+					  }, 4000);
 				} );
 			}
 		},

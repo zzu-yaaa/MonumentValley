@@ -1,9 +1,9 @@
 var map = {
-	background: 0xefe196,
+	background: 0xffffff/*efe196*/, //이거 도대체뭐냐
 	levelBoard: {
 		life: 2500,
 		duration: 1000,
-		backgroundColor: "rgba(0,0,0,0.4)",
+		backgroundColor: "rgba(0,0,0,0.4)", //안내문구 배경
 		info: [ {
 			type: "pic",
 			src: "img/common/border.png",
@@ -13,6 +13,7 @@ var map = {
 			type: "text",
 			text: "Chapter 2",
 			family: "微软雅黑", //글꼴
+
 			size: 0.035,
 			y: 0.27,
 			color: "#ffffff",
@@ -28,31 +29,31 @@ var map = {
 		}, {
 			type: "text",
 			text: "─────",
-			family: "微软雅黑",
+			family: "bold",
 			size: 0.02,
 			y: 0.45,
 			color: "#ffffff",
 			weight: "bold"
 		}, {
 			type: "text",
-			text: "在此",
-			family: "微软雅黑",
+			text: "부제",
+			family: "bold",
 			size: 0.03,
 			y: 0.5,
 			color: "#ffffff",
 			weight: "bolder"
 		}, {
 			type: "text",
-			text: "我要向",
-			family: "微软雅黑",
+			text: "숲속에서",
+			family: "bold",
 			size: 0.04,
 			y: 0.625,
 			color: "#ffffff",
 			weight: "bold"
 		}, {
 			type: "text",
-			text: "纪念碑谷致敬",
-			family: "微软雅黑",
+			text: "",
+			family: "bold",
 			size: 0.04,
 			y: 0.7,
 			color: "#ffffff",
@@ -275,6 +276,7 @@ var map = {
 	}, {
 		//오른쪽 아래에서 세번째의 위?
 		type: "stick",
+
 		y: 4,
 		z: -6,
 		d: 3,
@@ -792,6 +794,7 @@ var map = {
 		m2: {
 			type: "L",
 			color: 0x82734C//0xff6600 //조작기둥 주황색
+
 		},
 		m3: {
 			type: "L",
