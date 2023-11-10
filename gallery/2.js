@@ -1,9 +1,10 @@
+//1.js and 2.js have the same form
 var map = {
-	background: 0xffffff/*efe196*/, //이거 도대체뭐냐
+	background: 0xffffff, 
 	levelBoard: {
 		life: 2500,
 		duration: 1000,
-		backgroundColor: "rgba(0,0,0,0.4)", //안내문구 배경
+		backgroundColor: "rgba(0,0,0,0.4)",
 		info: [ {
 			type: "pic",
 			src: "img/common/border.png",
@@ -12,7 +13,7 @@ var map = {
 		}, {
 			type: "text",
 			text: "Chapter 2",
-			family: "微软雅黑", //글꼴
+			family: "맑은고딕",
 
 			size: 0.035,
 			y: 0.27,
@@ -21,7 +22,7 @@ var map = {
 		}, {
 			type: "text",
 			text: "Forest",
-			family: "微软雅黑",
+			family: "맑은고딕",
 			size: 0.07,
 			y: 0.37,
 			color: "#ffffff",
@@ -36,28 +37,36 @@ var map = {
 			weight: "bold"
 		}, {
 			type: "text",
-			text: "부제",
-			family: "bold",
+			text: "Made by",
+			family: "맑은 고딕",
 			size: 0.03,
-			y: 0.5,
-			color: "#ffffff",
-			weight: "bolder"
-		}, {
-			type: "text",
-			text: "숲속에서",
-			family: "bold",
-			size: 0.04,
-			y: 0.625,
+			y: 0.53,
 			color: "#ffffff",
 			weight: "bold"
 		}, {
 			type: "text",
-			text: "",
-			family: "bold",
-			size: 0.04,
-			y: 0.7,
+			text: "Lee Juyoen",
+			family: "맑은 고딕",
+			size: 0.03,
+			y: 0.6,
 			color: "#ffffff",
-			weight: "bold"
+			weight: "normal"
+		}, {
+			type: "text",
+			text: "Park Gahyun",
+			family: "맑은 고딕",
+			size: 0.03,
+			y: 0.67,
+			color: "#ffffff",
+			weight: "normal"
+		}, {
+			type: "text",
+			text: "Kim Seonjeong",
+			family: "맑은 고딕",
+			size: 0.03,
+			y: 0.74,
+			color: "#ffffff",
+			weight: "normal"
 		}, {
 			type: "pic",
 			src: "img/common/border.png",
@@ -157,78 +166,65 @@ var map = {
 		materialId: "st",
 		cannotClick: true
 	}, {
-		//맨 밑에 사각형
 		x: -5.5,
 		y: -1,
 		sx: 2,
 		sy: 3
 		
 	}, {
-		//그 위에 기둥
 		x: -6,
 		y: 3.5,
 		sy: 6
 	}, {
-		//앞 쪽 아치
 		type: "arc",
 		ry: Math.PI,
 		x: -5,
 		y: 6
 	}, {
-		//아치 앞 평지
 		type: "plane",
 		x: -4,
 		y: 6
 	}, {
-		//기둥 옆 아치
 		type: "arc",
 		ry: -Math.PI / 2,
 		x: -6,
 		z: -1,
 		y: 6
 	}, {
-		//오른쪽 기둥 옆 아치
 		type: "arc",
 		x: -1,
 		z: -6,
 		y: 6
 	}, {
-		//오른쪽 위 기둥
 		sy: 2,
 		y: 5.5,
 		z: -6
 	}, {
-		//오른쪽 기둥 앞아치
 		type: "arc",
 		ry: Math.PI / 2,
 		z: -5,
 		y: 6
 	}, {
-		// 그 앞 평면
 		type: "plane",
 		y: 6,
 		z: -4
 	}, {
-		//오른쪽 아래 기둥
 		sy: 3,
 		z: -6,
 		y: -1
 	}, {
-		//왼쪽 기둥 옆 아치 옆 평면
 		type: "plane",
 		x: -6,
 		y: 6,
 		z: -3.5,
 		sz: 4
 	}, {
-		//오른쪽 기둥 옆 아치 옆 평명
 		type: "plane",
 		x: -3.5,
 		y: 6,
 		z: -6,
 		sx: 4	
 	}, {
-		//도착지
 		type: "plane",
 		x: -6,
 		y: 6.01,
@@ -237,44 +233,37 @@ var map = {
 		sx: 1.3333,
 		materialId: "m2"
 	}, {
-		//왼쪽 아래 정사각형 앞 아치
 		type: "arc",
 		ry: Math.PI,
 		x: -4
 		
 	}, {
-		//계단 포함 기둥 옆면 (윗면 x)
 		z: 5.5,
 		sz: 2,
 		sy: 3,
 		y: -1
 	}, {
-		//계단 아래 땅 아랫면 (윗면 x)
 		y: -2,
 		z: 6,
 		x: 1.5,
 		sx: 2
 	}, {
-		//돌아가는 길 아래 아치
 		type: "arc",
 		ry: -Math.PI / 2,
 		z: 4
 	}, {
-		//맨 오른쪽 아래 기둥
 		type: "stick",
 		y: 2.5,
 		z: -6,
 		d: 1,
 		height: 4
 	}, {
-		//오른쪽 아래에서 두번째
 		type: "stick",
 		y: 2.5,
 		z: -6,
 		d: 2,
 		height: 4
 	}, {
-		//오른쪽 아래에서 세번째의 위?
 		type: "stick",
 
 		y: 4,
@@ -282,7 +271,6 @@ var map = {
 		d: 3,
 		height: 1
 	}, {
-		//오른쪽 아래에서 세번째의 아래
 		type: "stick",
 		x: 7,
 		y: 9,
@@ -290,7 +278,6 @@ var map = {
 		d: 3,
 		height: 3
 	}, {
-		//?? 안바뀜
 		type: "tri",
 		x: 6.6,
 		y: 10.6,
@@ -300,7 +287,6 @@ var map = {
 		sy: 0.1,
 		rz: Math.PI
 	}, {
-		//얘도 안바뀜
 		type: "stick",
 		y: 2.5,
 		z: -6,
@@ -315,28 +301,24 @@ var map = {
 		materialArr: [ "mRoof", "mRoof" ]
 	
 	}, {
-		//오른쪽 맨 위 첫번째
 		type: "stick",
 		y: 7.5,
 		z: -6,
 		d: 1,
 		height: 2
 	}, {
-		//오른쪽 맨 위 두번째
 		type: "stick",
 		y: 7.5,
 		z: -6,
 		d: 2,
 		height: 2
 	}, {
-		//오른쪽 맨 위 세번째
 		type: "stick",
 		y: 7.5,
 		z: -6,
 		d: 3,
 		height: 2
 	}, {
-		//안바껴유
 		type: "stick",
 		y: 7.5,
 		z: -6,
@@ -349,28 +331,24 @@ var map = {
 		ry: Math.PI / 4,
 		materialArr: [ "mRoof", "mRoof" ]
 	}, {
-		//기둥무리 맨 왼쪽에서 오른쪽 위의 첫번째
 		type: "stick",
 		y: 7.5,
 		x: -6,
 		d: 1,
 		height: 2
 	}, {
-		//기둥무리 맨 왼쪽에서 오른쪽 위의 두번째
 		type: "stick",
 		y: 7.5,
 		x: -6,
 		d: 2,
 		height: 2
 	}, {
-		//기둥무리 맨 왼쪽에서 오른쪽 위의 세번째
 		type: "stick",
 		y: 7.5,
 		x: -6,
 		d: 3,
 		height: 2
 	}, {
-		//ㅋㅋ
 		type: "stick",
 		y: 7.5,
 		x: -6,
@@ -384,7 +362,6 @@ var map = {
 		ry: Math.PI / 4,
 		materialArr: [ "mRoof", "mRoof" ]
 	}, {
-		//기둥무리 가운데 위 오른쪽에서 첫번째
 		type: "stick",
 		y: 7.5,
 		x: -6,
@@ -392,7 +369,6 @@ var map = {
 		d: 1,
 		height: 2
 	}, {
-		//기둥무리 가운데 위 오른쪽에서 두번째
 		type: "stick",
 		y: 7.5,
 		x: -6,
@@ -400,7 +376,6 @@ var map = {
 		d: 2,
 		height: 2
 	}, {
-		//기둥무리 가운데 위 오른쪽에서 세번째
 		type: "stick",
 		y: 7.5,
 		x: -6,
@@ -408,7 +383,6 @@ var map = {
 		d: 3,
 		height: 2
 	}, {
-		//ㅋ
 		type: "stick",
 		y: 7.5,
 		x: -6,
@@ -416,7 +390,6 @@ var map = {
 		d: 0,
 		height: 2
 	}, {
-		//버튼
 		type: "roundRect",
 		id: "btn1",
 		y: -1.9,
@@ -619,7 +592,6 @@ var map = {
 	
 
 	 {
-		//돌아가는 다리
 		type: "group",
 		id: "bridge",
 		children: [ {
@@ -781,26 +753,25 @@ var map = {
 	materials: {
 		m0: {
 			type: "L",
-			color: 0x666666, //0xdad282
+			color: 0x666666, 
 			mapId: "img/tree_texture3.jpg"
 
 		},
 		m1: {
 			type: "L",
-			color: 0x777777, //0xdad282
+			color: 0x777777, 
 			mapId: "img/tree_texture3.jpg"
 
 		},
 		m2: {
 			type: "L",
-			color: 0x82734C//0xff6600 //조작기둥 주황색
+			color: 0x82734C
 
 		},
 		m3: {
 			type: "L",
 			color: 0xffffff,
 			mapId: "img/level2ground_v4.png"
-			//mapId: "img/forest.png"
 		},
 		m4: {
 			type: "B",
@@ -808,19 +779,16 @@ var map = {
 			type: "B",
 			color: 0x000000,
 			opacity: 0.0,
-			//			mapId: "img/null.png"
 		},
 		m5: {
 			type: "L",
 			color: 0xff8822,
 			mapId: "img/endPoint.png"
 		},
-		//배경에 사진 넣기
 		m6: {
 			type: "L",
 			color: 0xffffff,
 			mapId: "img/forest.png"
-			//mapId: "img/forest.png"
 		},
 		mRoof: {
 			type: "L",
@@ -835,8 +803,7 @@ var map = {
 		"img/level2ground.png", "img/null.png", "img/endPoint.png","img/level1ground.png","img/trees.png",
 		"img/forest.png","img/tree_texture.jpg", "img/tree_texture2.jpg", "img/level2ground2.png",
 		"img/grass_texture.jpg", "img/grass_texture2.jpg", "img/level2ground_v2.png", "img/level2ground_v3.png",
-		"img/level2ground_v4.png", "img/tree_texture3.jpg","img/rock_texture.jpg", "img/sand_texture.jpg",
-		"img/sand_texture2.jpg",
+		"img/level2ground_v4.png", "img/tree_texture3.jpg"
 	],
 	lights: [ {
 			key: "areaLight",
