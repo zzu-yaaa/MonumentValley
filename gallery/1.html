@@ -62,9 +62,6 @@
       loadCar();
       //loadMoon();
 
-      
-
-
       function loadMusic() {
         let audioListener = new THREE.AudioListener();
         level.camera.add( audioListener );
@@ -78,7 +75,7 @@
           'audio/bgm.mp3',
           ( audioBuffer ) => {
             bgm.setBuffer( audioBuffer );
-//          bgm.play();
+            bgm.play();
             bgm.setLoop( true );
           }
         );
@@ -101,7 +98,7 @@
       //     objLoader.setPath( 'models/moon/' );
       //     objLoader.load( 'Luna.obj', ( obj ) => {
       //       level.meshFactory.addUserObjectCreator( "moon", ( item, useless, container ) => {
-      //         //let mesh = obj.children[1].clone(); children 0이 뼈다귀 1이 고기부분
+      //         //let mesh = obj.children[1].clone(); children 0이 뼈다귀 1이 고기부분=
       //         // 모든 자식을 병합한 객체
       //         let mergedObject = new THREE.Object3D();
       //         // 병합된 객체에 모든 자식을 추가
