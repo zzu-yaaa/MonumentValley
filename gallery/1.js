@@ -1,9 +1,10 @@
 var a = 2.5;
 var map = {
+	//LevelBoard Style Before game start
 	levelBoard: {
 		life: 2500,
 		duration: 1000,
-		backgroundColor: "rgba(0,0,0,0.4)",
+		backgroundColor: "rgba(0,0,0,0.4)", //Information station background
 		info: [ {
 			type: "pic",
 			src: "img/common/border.png",
@@ -11,7 +12,7 @@ var map = {
 			y: 0.15
 		}, {
 			type: "text",
-			text: "제 1장",
+			text: "chapter 1",
 			family: "맑은 고딕",
 			size: 0.035,
 			y: 0.27,
@@ -19,7 +20,7 @@ var map = {
 			weight: "bold"
 		}, {
 			type: "text",
-			text: "도시",
+			text: "The City",
 			family: "맑은 고딕",
 			size: 0.07,
 			y: 0.37,
@@ -35,26 +36,34 @@ var map = {
 			weight: "normal"
 		}, {
 			type: "text",
-			text: " ",
+			text: "Made by",
 			family: "맑은 고딕",
 			size: 0.03,
-			y: 0.5,
+			y: 0.53,
 			color: "#ffffff",
 			weight: "bold"
 		}, {
 			type: "text",
-			text: " ",
+			text: "Lee Layeon",
 			family: "맑은 고딕",
-			size: 0.04,
-			y: 0.625,
+			size: 0.03,
+			y: 0.6,
 			color: "#ffffff",
 			weight: "normal"
 		}, {
 			type: "text",
-			text: "Thanks to MonumentValley",
+			text: "Lee Yujin",
 			family: "맑은 고딕",
-			size: 0.04,
-			y: 0.7,
+			size: 0.03,
+			y: 0.67,
+			color: "#ffffff",
+			weight: "normal"
+		}, {
+			type: "text",
+			text: "Kim Seonjeong",
+			family: "맑은 고딕",
+			size: 0.03,
+			y: 0.74,
 			color: "#ffffff",
 			weight: "normal"
 		}, {
@@ -74,7 +83,7 @@ var map = {
 			y: 0.15
 		}, {
 			type: "text",
-			text: "完成",
+			text: "completion",
 			family: "맑은 고딕",
 			size: 0.06,
 			y: 0.5,
@@ -87,6 +96,8 @@ var map = {
 			y: 0.85
 		} ]
 	},
+
+	//Make map and 3D Models
 	blocks: [ {
 		type: "cube",
 		x: 0,
@@ -233,19 +244,7 @@ var map = {
 		y: 20,
 		z: 2,
 		height: 4
-	}, 
-	//{
-	// 	type: "moon",
-	// 	sx: 8,
-	// 	sy: 8,
-	// 	sz: 8,
-	// 	x: 6,
-	// 	y: 20.5,
-	// 	z: 2,
-	// 	height: 4,
-	// 	id: "moon"
-	// }, 
-	{
+	}, {
 		type: "key",
 		sx: 15,
 		sy: 15,
@@ -255,19 +254,7 @@ var map = {
 		z: 2,
 		height: 4,
 		id: "key"
-	}, 
-	// {
-	// 	type: "building_2",
-	// 	sx: 7,
-	// 	sy: 7,
-	// 	sz: 7,
-	// 	x: 10,
-	// 	y: 12,
-	// 	z: 15,
-	// 	height: 4,
-	// 	id: "building_2"
-	// },
-	{
+	}, {
 		type: "building_3",
 		sx: 0.1,
 		sy: 0.1,
@@ -277,30 +264,7 @@ var map = {
 		z: 20,
 		height: 4,
 		id: "building_3"
-	},
-	// {
-	// 	type: "aircraft",
-	// 	sx: 1,
-	// 	sy: 1,
-	// 	sz: 1,
-	// 	x: 25,
-	// 	y: 30,
-	// 	z: 16,
-	// 	height: 4,
-	// 	id: "aircraft"
-	// },
-	// {
-	// 	type: "cartoon_car",
-	// 	sx: 1,
-	// 	sy: 1,
-	// 	sz: 1,
-	// 	x: 30,
-	// 	y: 30,
-	// 	z: 16,
-	// 	height: 4,
-	// 	id: "cartoon_car"
-	// }
-	{
+	},{
 		type: "balloon",
 		sx: 24,
 		sy: 24,
@@ -310,8 +274,7 @@ var map = {
 		z: 16,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 17,
 		sy: 17,
@@ -321,8 +284,7 @@ var map = {
 		z: 20,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 24,
 		sy: 24,
@@ -332,8 +294,7 @@ var map = {
 		z: 20,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 24,
 		sy: 24,
@@ -343,8 +304,7 @@ var map = {
 		z: 4,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 22,
 		sy: 22,
@@ -354,8 +314,7 @@ var map = {
 		z: 3,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 20,
 		sy: 20,
@@ -365,8 +324,7 @@ var map = {
 		z: 4,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 23,
 		sy: 23,
@@ -376,8 +334,7 @@ var map = {
 		z: 14,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 22,
 		sy: 22,
@@ -387,8 +344,7 @@ var map = {
 		z: 14,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 19,
 		sy: 19,
@@ -398,8 +354,7 @@ var map = {
 		z: 14,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 19,
 		sy: 19,
@@ -409,8 +364,7 @@ var map = {
 		z: 14,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 18,
 		sy: 18,
@@ -420,8 +374,7 @@ var map = {
 		z: 14,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 15,
 		sy: 15,
@@ -431,8 +384,7 @@ var map = {
 		z: 14,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 17,
 		sy: 17,
@@ -442,8 +394,7 @@ var map = {
 		z: 14,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 17,
 		sy: 17,
@@ -453,8 +404,7 @@ var map = {
 		z: 9,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 14,
 		sy: 14,
@@ -464,8 +414,7 @@ var map = {
 		z: 8,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 14,
 		sy: 14,
@@ -475,8 +424,7 @@ var map = {
 		z: 8,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 14,
 		sy: 14,
@@ -486,8 +434,7 @@ var map = {
 		z: 8,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 17,
 		sy: 17,
@@ -497,8 +444,7 @@ var map = {
 		z: 8,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 17,
 		sy: 17,
@@ -508,8 +454,7 @@ var map = {
 		z: 10,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 17,
 		sy: 17,
@@ -519,8 +464,7 @@ var map = {
 		z: 10,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 24,
 		sy: 24,
@@ -530,8 +474,7 @@ var map = {
 		z: 10,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 25,
 		sy: 25,
@@ -541,8 +484,7 @@ var map = {
 		z: 10,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 18,
 		sy: 18,
@@ -552,8 +494,7 @@ var map = {
 		z: 10,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "balloon",
 		sx: 25,
 		sy: 25,
@@ -563,8 +504,7 @@ var map = {
 		z: 10,
 		height: 4,
 		id: "balloon"
-	},
-	{
+	},{
 		type: "paperPlane2",
 		sx: 25,
 		sy: 25,
@@ -574,8 +514,7 @@ var map = {
 		z: 10,
 		height: 4,
 		id: "paperPlane2"
-	},
-	{
+	},{
 		type: "paperPlane",
 		sx: 25,
 		sy: 25,
@@ -585,41 +524,8 @@ var map = {
 		z: 8,
 		height: 4,
 		id: "paperPlane"
-	},
-	// {
-	// 	type: "paperPlane",
-	// 	sx: 27,
-	// 	sy: 27,
-	// 	sz: 27,
-	// 	x: 33,
-	// 	y: 34,
-	// 	z: 19,
-	// 	height: 4,
-	// 	id: "paperPlane"
-	// },
-	// {
-	// 	type: "paperPlane",
-	// 	sx: 27,
-	// 	sy: 27,
-	// 	sz: 27,
-	// 	x: 35,
-	// 	y: 39,
-	// 	z: 19,
-	// 	height: 4,
-	// 	id: "paperPlane"
-	// },
-	// {
-	// 	type: "paperPlane",
-	// 	sx: 27,
-	// 	sy: 27,
-	// 	sz: 27,
-	// 	x: 16,
-	// 	y: 35,
-	// 	z: 21,
-	// 	height: 4,
-	// 	id: "paperPlane"
-	// },
-	{
+	}, {
+		//the moving part of the path
 		type: "turntablex",
 		id: "turn",
 		x: 8,
@@ -717,6 +623,7 @@ var map = {
 			materialId: "m1"
 		} ]
 	} ],
+	//Load and set meterials
 	materials: {
 		m0: {
 			type: "L",
@@ -730,17 +637,17 @@ var map = {
 		},
 		m2: {
 			type: "L",
-			color: 0xaabfc2, // 끝
+			color: 0xaabfc2,
 			mapId:"img/path/holo3.jpg"
 		},
 		m22: {
 			type: "L",
-			color: 0xaabfc2, // 가운데
+			color: 0xaabfc2, 
 			mapId:"img/path/holo3.jpg"
 		},
 		m222: {
 			type: "L",
-			color: 0xffffff, //막대
+			color: 0xffffff,
 			mapId:"img/path/holo.jpg"
 		},
 		m3: {
@@ -760,10 +667,12 @@ var map = {
 			mapId: "img/endPoint.png"
 		}
 	},
+	//Load textures
 	textures: [ "img/path/mm.png", "img/path/mm.png",
 		"img/common/border.png", "img/pt.png", "img/null.png",
 		"img/endPoint.png","img/path/holo.jpg","img/path/holo3.jpg"
 	],
+	//Set lights
 	lights: [ {
 			key: "areaLight",
 			color: 0x666666,
@@ -803,6 +712,7 @@ var map = {
 			}
 		}
 	],
+	//Set camera position
 	camera: {
 		distance: 50,
 		lookAt: {
@@ -933,6 +843,7 @@ var map = {
 			neighbors: [ "p14" ],
 			parentId: "bridge",
 			materialId: "m4",
+			//Makes the block rise when manipulated
 			onComing: function() {
 				app.world.childrenWithId.turn.becomeDisable();
 			}
@@ -1162,6 +1073,7 @@ var map = {
 			face: 0,
 			neighbors: [ "p29" ],
 			materialId: "m4",
+			//When the character arrives at the endpoint
 			hasCome: function() {
 			   setTimeout( () => {
 				  app.world.scene.remove( app.world.childrenWithId.key );

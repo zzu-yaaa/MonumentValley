@@ -20,6 +20,8 @@
     <script src="../lib/OrbitControls.js"></script>		  
     <script src="1.js"></script>
     <script>
+
+      //Action control
       class ActonGroup {
         constructor() {
           this.actions = [];
@@ -36,6 +38,7 @@
         }
       }
 
+      //Load World
       let app = new NOVA.App();
       let size = app.getWorldHeight() / 20;
       let level = new HYPEOMETRY.GameLevel( app, 0xbfc6d9, map, {
@@ -50,6 +53,7 @@
         TWEEN.update();
       } );
 
+      //Load 3D Models
       loadKey();
       loadMusic();
       loadHouse();
@@ -60,7 +64,8 @@
       loadBalloon();
       loadPlane();
       loadCar();
-      //loadMoon();
+
+      //Load Music
 
       function loadMusic() {
         let audioListener = new THREE.AudioListener();
@@ -88,58 +93,41 @@
         );
       }
 
-      // function loadMoon() {
-      //   var mtlLoader = new THREE.MTLLoader( level.loaderFactory.manager );
-      //   mtlLoader.setPath( 'models/moon/' );
-      //   mtlLoader.load( 'Luna.mtl', ( materials ) => {
-      //     materials.preload();
-      //     var objLoader = new THREE.OBJLoader();
-      //     objLoader.setMaterials( materials );
-      //     objLoader.setPath( 'models/moon/' );
-      //     objLoader.load( 'Luna.obj', ( obj ) => {
-      //       level.meshFactory.addUserObjectCreator( "moon", ( item, useless, container ) => {
-      //         //let mesh = obj.children[1].clone(); children 0이 뼈다귀 1이 고기부분=
-      //         // 모든 자식을 병합한 객체
-      //         let mergedObject = new THREE.Object3D();
-      //         // 병합된 객체에 모든 자식을 추가
-      //         for (let child of obj.children) {
-      //             mergedObject.add(child.clone());
-      //         }
-      //         // 변경된 부분: 병합된 객체를 복제
-      //         let mesh = mergedObject.clone();
-      //         mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8); //크기조절
-      //         mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 ); //위치 조절
-      //         mesh.rotation.set( item.rx || 0, item.ry || 0, item.rz || 0 );
-      //         container.add( mesh );
-      //         return mesh;
-      //       } );
-      //     } );
-      //   } );
-      // }
+      //When load 3D model, Repeat this form named load###()
+      function loadKey() {
+        // Create an MTL loader using THREE.MTLLoader and set up the loader manager.
+        var mtlLoader = new THREE.MTLLoader(level.loaderFactory.manager);
+        // Set the load path for the MTL loader. The folder is where the MTL and OBJ files are located.
+        mtlLoader.setPath('models/moon/');
+        // Load the MTL file ('Luna.mtl') and execute the callback function with the loaded materials.
+        mtlLoader.load('Luna.mtl', (materials) => {
+            // Preload the loaded material information for efficient model loading.
+            materials.preload();
+            // Create an OBJ loader using THREE.OBJLoader.
+            var objLoader = new THREE.OBJLoader();
+            // Set the materials to the OBJ loader.
+            objLoader.setMaterials(materials);
+            // Set the load path for the OBJ loader to 'models/moon/'.
+            objLoader.setPath('models/moon/');
+            // Load the OBJ file ('Luna.obj') and execute the callback function with the loaded 3D model.
+            objLoader.load('Luna.obj', (obj) => {
+                console.log(obj.children);
+                // Add a custom object constructor named "key" to the level.meshFactory object.
+                level.meshFactory.addUserObjectCreator("key", (item, useless, container) => {
+                    // Clone the first child object of the loaded 3D model.
+                    let mesh = obj.children[0].clone();
+                    // Set the size of the model using size information from the item object.
+                    mesh.scale.set(item.sx || 0, item.sy || 0, item.sz || 0);
+                    // Set the position of the model using position information from the item object.
+                    mesh.position.set(item.x * size || 0, item.y * size || 0, item.z * size || 0);
+                    // Set the rotation of the model using rotation information from the item object.
+                    mesh.rotation.set(item.rx || 0, item.ry || 0, item.rz || 0);
+                    container.add(mesh);
+                    return mesh;
+                });
+            });
+        });
 
-      function loadKey() { //loadKey() : 키(Key)와 관련된 3D 모델을 로드하는 작업을 수행합니다.
-        var mtlLoader = new THREE.MTLLoader( level.loaderFactory.manager ); 
-        //THREE.MTLLoader를 사용하여 3D 모델의 재질(MTL)을 로드하기 위한 mtlLoader 객체를 생성하고, level.loaderFactory.manager를 매개변수로 전달합니다. 이것은 로딩 관리자(loader manager)를 설정하는 부분입니다
-        mtlLoader.setPath( 'models/moon/' ); //mtlLoader의 로드 경로를 로 설정합니다. 이 폴더는 MTL 파일과 OBJ 파일이 위치한 경로입니다
-        mtlLoader.load( 'Luna.mtl', ( materials ) => { //mtlLoader를 사용하여 'mariokey.mtl' 파일을 로드하고, 로딩이 완료되면 콜백 함수를 실행합니다. 이 콜백 함수는 로드된 재질 정보를 전달받습니다.
-              materials.preload(); //로드된 재질 정보를 사전로드(preload)합니다. 이렇게 하면 재질을 미리 메모리에 올려두어 효율적인 모델 로딩이 가능합니다.
-              var objLoader = new THREE.OBJLoader(); //3D 모델 파일(OBJ)을 로드하기 위한 OBJLoader 객체를 생성합니다.
-              objLoader.setMaterials( materials ); //로드한 재질 정보를 objLoader에 설정합니다.
-              objLoader.setPath( 'models/moon/' ); //3D 모델 파일의 로드 경로를 'models/key/'로 설정합니다.
-              objLoader.load( 'Luna.obj', ( obj ) => { //objLoader를 사용하여 'mariokey.obj' 파일을 로드하고, 로딩이 완료되면 콜백 함수를 실행합니다. 이 콜백 함수는 로드된 3D 모델을 전달받습니다.
-              console.log(obj.children); // 모든 자식을 콘솔에 출력합니다.  
-              level.meshFactory.addUserObjectCreator( "key", ( item, useless, container ) => { //level.meshFactory 객체에 "key"라는 이름으로 사용자 정의 객체 생성자를 추가합니다. 이 생성자는 콜백 함수로 정의되며, 모델의 위치, 크기, 회전 등을 설정하고 컨테이너에 추가한 후, 해당 모델을 반환합니다
-
-              let mesh = obj.children[ 0 ].clone(); //로드된 3D 모델의 첫 번째 자식 객체를 복제하여 mesh 변수에 저장합니다.
-              mesh.scale.set( item.sx || 0, item.sy || 0, item.sz || 0 ); //item 객체에서 가져온 크기 정보를 사용하여 모델의 크기를 설정합니다. 만약 크기 정보가 없으면 기본값으로 1을 사용합니다.
-              mesh.position.set( item.x * size || 0, item.y * size || 0, item.z * size || 0 ); //item 객체에서 가져온 위치 정보를 사용하여 모델의 위치를 설정합니다. size 변수는 이전에 계산된 값으로 사용됩니다.
-              mesh.rotation.set( item.rx || 0, item.ry || 0, item.rz || 0 ); //item 객체에서 가져온 회전 정보를 사용하여 모델의 회전을 설정합니다. 만약 회전 정보가 없으면 기본값으로 0을 사용합니다.
-              container.add( mesh ); //모델을 container에 추가합니다. container는 모델들을 담을 수 있는 객체입니다
-              return mesh;
-
-            } );
-          } );
-        } );
       }
 
       function loadCar() {
@@ -152,17 +140,16 @@
           objLoader.setPath( 'models/car/' );
           objLoader.load( '_Subaru-Loyale.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "car", ( item, useless, container ) => {
-              //let mesh = obj.children[1].clone(); children 0이 뼈다귀 1이 고기부분
-              // 모든 자식을 병합한 객체
+              // All children merged object
               let mergedObject = new THREE.Object3D();
-              // 병합된 객체에 모든 자식을 추가
+              // Add all children to merged objects
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
               }
-              // 변경된 부분: 병합된 객체를 복제
+              //replicate merged objects
               let mesh = mergedObject.clone();
-              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8); //크기조절
-              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 ); //위치 조절
+              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8);
+              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 );
               mesh.rotation.set( item.rx || 0, item.ry || 0, item.rz || 0 );
               container.add( mesh );
               return mesh;
@@ -180,17 +167,13 @@
           objLoader.setPath( 'models/plane/' );
           objLoader.load( 'Paper_Planes.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "paperPlane", ( item, useless, container ) => {
-              //let mesh = obj.children[1].clone(); children 0이 뼈다귀 1이 고기부분
-              // 모든 자식을 병합한 객체
               let mergedObject = new THREE.Object3D();
-              // 병합된 객체에 모든 자식을 추가
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
               }
-              // 변경된 부분: 병합된 객체를 복제
               let mesh = mergedObject.clone();
-              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8); //크기조절
-              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 ); //위치 조절
+              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8);
+              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 );
               mesh.rotation.set( item.rx || 0, item.ry || 0, item.rz || 0 );
               mesh.rotation.y -= Math.PI / 180 * 80;
               container.add( mesh );
@@ -212,17 +195,13 @@
           objLoader.setPath( 'models/plane/' );
           objLoader.load( 'Paper_Planes.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "paperPlane2", ( item, useless, container ) => {
-              //let mesh = obj.children[1].clone(); children 0이 뼈다귀 1이 고기부분
-              // 모든 자식을 병합한 객체
               let mergedObject = new THREE.Object3D();
-              // 병합된 객체에 모든 자식을 추가
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
               }
-              // 변경된 부분: 병합된 객체를 복제
               let mesh = mergedObject.clone();
-              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8); //크기조절
-              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 ); //위치 조절
+              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8); 
+              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 ); 
               mesh.rotation.set( item.rx || 0, item.ry || 0, item.rz || 0 );
               mesh.rotation.y -= Math.PI ;
               container.add( mesh );
@@ -242,17 +221,13 @@
           objLoader.setPath( 'models/cartoon_car/' );
           objLoader.load( 'SoloWheel.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "cartoon_car", ( item, useless, container ) => {
-              //let mesh = obj.children[1].clone(); children 0이 뼈다귀 1이 고기부분
-              // 모든 자식을 병합한 객체
               let mergedObject = new THREE.Object3D();
-              // 병합된 객체에 모든 자식을 추가
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
               }
-              // 변경된 부분: 병합된 객체를 복제
               let mesh = mergedObject.clone();
-              mesh.scale.set( (item.sx || 1)*2, (item.sy || 1)*2, (item.sz || 1 )*2); //크기조절
-              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 ); //위치 조절
+              mesh.scale.set( (item.sx || 1)*2, (item.sy || 1)*2, (item.sz || 1 )*2);
+              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 );
               mesh.rotation.set( item.rx || 0, item.ry || 0, item.rz || 0 );
               container.add( mesh );
               return mesh;
@@ -271,17 +246,13 @@
           objLoader.setPath( 'models/modern_house/' );
           objLoader.load( 'House_Model_.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "modern_house", ( item, useless, container ) => {
-              //let mesh = obj.children[1].clone(); children 0이 뼈다귀 1이 고기부분
-              // 모든 자식을 병합한 객체
               let mergedObject = new THREE.Object3D();
-              // 병합된 객체에 모든 자식을 추가
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
               }
-              // 변경된 부분: 병합된 객체를 복제
               let mesh = mergedObject.clone();
-              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8); //크기조절
-              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 ); //위치 조절
+              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8); 
+              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 ); 
               mesh.rotation.set( item.rx || 0, item.ry || 0, item.rz || 0 );
               container.add( mesh );
               return mesh;
@@ -300,17 +271,13 @@
           objLoader.setPath( 'models/building_2/' );
           objLoader.load( 'Building.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "building_2", ( item, useless, container ) => {
-              //let mesh = obj.children[1].clone(); children 0이 뼈다귀 1이 고기부분
-              // 모든 자식을 병합한 객체
               let mergedObject = new THREE.Object3D();
-              // 병합된 객체에 모든 자식을 추가
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
               }
-              // 변경된 부분: 병합된 객체를 복제
               let mesh = mergedObject.clone();
-              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8); //크기조절
-              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 ); //위치 조절
+              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8);
+              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 );
               mesh.rotation.set( item.rx || 0, item.ry || 0, item.rz || 0 );
               mesh.rotation.y = Math.PI / 8;
               container.add( mesh );
@@ -331,17 +298,13 @@
           objLoader.setPath( 'models/building_3/' );
           objLoader.load( 'Building_14_obj.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "building_3", ( item, useless, container ) => {
-              //let mesh = obj.children[1].clone(); children 0이 뼈다귀 1이 고기부분
-              // 모든 자식을 병합한 객체
               let mergedObject = new THREE.Object3D();
-              // 병합된 객체에 모든 자식을 추가
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
               }
-              // 변경된 부분: 병합된 객체를 복제
               let mesh = mergedObject.clone();
-              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8); //크기조절
-              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 ); //위치 조절
+              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8);
+              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 );
               mesh.rotation.set( item.rx || 0, item.ry || 0, item.rz || 0 );
               container.add( mesh );
               return mesh;
@@ -360,17 +323,13 @@
           objLoader.setPath( 'models/aircraft/' );
           objLoader.load( 'BerievA50.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "aircraft", ( item, useless, container ) => {
-              //let mesh = obj.children[1].clone(); children 0이 뼈다귀 1이 고기부분
-              // 모든 자식을 병합한 객체
               let mergedObject = new THREE.Object3D();
-              // 병합된 객체에 모든 자식을 추가
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
               }
-              // 변경된 부분: 병합된 객체를 복제
               let mesh = mergedObject.clone();
-              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8); //크기조절
-              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 ); //위치 조절
+              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8); 
+              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 ); 
               mesh.rotation.set( item.rx || 0, item.ry || 0, item.rz || 0 );
               mesh.rotation.y = Math.PI / 8;
               container.add( mesh );
@@ -390,17 +349,13 @@
           objLoader.setPath( 'models/ballon/' );
           objLoader.load( 'Balloon.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "balloon", ( item, useless, container ) => {
-              //let mesh = obj.children[1].clone(); children 0이 뼈다귀 1이 고기부분
-              // 모든 자식을 병합한 객체
               let mergedObject = new THREE.Object3D();
-              // 병합된 객체에 모든 자식을 추가
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
               }
-              // 변경된 부분: 병합된 객체를 복제
               let mesh = mergedObject.clone();
-              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8); //크기조절
-              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 ); //위치 조절
+              mesh.scale.set( (item.sx || 1)*0.8, (item.sy || 1)*0.8, (item.sz || 1 )*0.8); 
+              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 );
               mesh.rotation.set( item.rx || 0, item.ry || 0, item.rz || 0 );
               mesh.rotation.y = Math.PI / 8;
               container.add( mesh );
@@ -410,6 +365,7 @@
         } );
       }
 
+      //Load character file and run
       let loader = new THREE.ColladaLoader( level.loaderFactory.manager );
       loader.load( 'models/Mario/mario.dae', function( collada ) {
         elf = collada.scene;
@@ -440,148 +396,186 @@
 
       } );
 
-      function createBoneAnimation( bone, smd, id, isLoop, duration, callback ) {
-        let smdloader = new THREE.FileLoader( level.loaderFactory.manager );
-        smdloader.load( 'models/Mario/smd/' + smd + '.smd', ( smd ) => {
-          let actionGroup = new ActonGroup();
-          let smdobj = parseSMD( smd );
-          findBone( bone, smdobj );
-          for ( let i = 0; i < smdobj.length; i++ ) {
-            smdobj[ i ].bone.rotation.order = 'ZYX';
-            actionGroup.actions.push( animate( smdobj[ i ], isLoop, duration ) );
-          }
-          charactor.actions[ id ] = actionGroup;
+      function createBoneAnimation(bone, smd, id, isLoop, duration, callback) {
+        let smdloader = new THREE.FileLoader(level.loaderFactory.manager);
 
-          if ( callback ) {
-            callback();
-          }
-        } );
+        smdloader.load('models/Mario/smd/' + smd + '.smd', (smd) => {
+            // Parse the loaded SMD file.
+            let actionGroup = new ActonGroup();
+            let smdobj = parseSMD(smd);
+            findBone(bone, smdobj);
+            // Iterate through each bone object.
+            for (let i = 0; i < smdobj.length; i++) {
+                // Set rotation order for each bone.
+                smdobj[i].bone.rotation.order = 'ZYX';
+                // Create an animation for the current bone and add it to the ActionGroup.
+                actionGroup.actions.push(animate(smdobj[i], isLoop, duration));
+            }
+            // Store the ActionGroup in the character's actions array using the provided id.
+            charactor.actions[id] = actionGroup;
+            if (callback) {
+                callback();
+                // Execute the callback function if provided.
+            }
+        });
       }
 
-      function animate( smdobj, isLoop = true, duration = 30 ) {
-        let animateObj = {
-          smdobj: smdobj,
-          index: 0,
-          loop: isLoop,
-          time: duration,
-          stop: () => {
-            if ( animateObj.tr ) {
-              animateObj.tr.stop();
-            }
-            if ( animateObj.tp ) {
-              animateObj.tp.stop();
-            }
-          },
-          start: () => {
-            let bone = animateObj.smdobj.bone;
-            let pa = animateObj.smdobj.position;
-            let ra = animateObj.smdobj.rotation;
-            bone.position.set( pa[ animateObj.index ], pa[ animateObj.index + 1 ], pa[ animateObj.index + 2 ] );
-            bone.rotation.set( ra[ animateObj.index ], ra[ animateObj.index + 1 ], ra[ animateObj.index + 2 ] );
-            animateObj.index += 3;
-            ani();
-
-            function ani() {
-              animateObj.tr = new TWEEN.Tween( bone.rotation )
-                .to( {
-                  x: ra[ animateObj.index ],
-                  y: ra[ animateObj.index + 1 ],
-                  z: ra[ animateObj.index + 2 ]
-                }, animateObj.time )
-                .start()
-              animateObj.tp = new TWEEN.Tween( bone.position )
-                .to( {
-                  x: pa[ animateObj.index ],
-                  y: pa[ animateObj.index + 1 ],
-                  z: pa[ animateObj.index + 2 ]
-                }, animateObj.time )
-                .start()
-                .onComplete( () => {
-                  animateObj.index += 3;
-                  if ( animateObj.index >= pa.length ) {
-                    animateObj.index = 0;
-                    if ( animateObj.loop ) {
-                      ani();
-                    }
-                  } else {
-                    ani();
+      function animate(smdobj, isLoop = true, duration = 30) {
+          // Create an animation object based on the provided SMD data.
+          let animateObj = {
+              smdobj: smdobj,
+              index: 0,
+              loop: isLoop,
+              time: duration,
+              stop: () => {
+                  // Stop the animation by stopping any existing TWEEN tweens.
+                  if (animateObj.tr) {
+                      animateObj.tr.stop();
                   }
-                } );
-            }
+                  if (animateObj.tp) {
+                      animateObj.tp.stop();
+                  }
+              },
+              start: () => {
+                  // Start the animation by updating bone position and rotation using TWEEN.
+                  let bone = animateObj.smdobj.bone;
+                  let pa = animateObj.smdobj.position;
+                  let ra = animateObj.smdobj.rotation;
 
-          }
-        }
-        return animateObj;
+                  bone.position.set(pa[animateObj.index], pa[animateObj.index + 1], pa[animateObj.index + 2]);
+                  bone.rotation.set(ra[animateObj.index], ra[animateObj.index + 1], ra[animateObj.index + 2]);
+
+                  animateObj.index += 3;
+                  ani();
+
+                  function ani() {
+                      // Define TWEEN tweens for rotation and position, and handle completion.
+                      animateObj.tr = new TWEEN.Tween(bone.rotation)
+                          .to({
+                              x: ra[animateObj.index],
+                              y: ra[animateObj.index + 1],
+                              z: ra[animateObj.index + 2]
+                          }, animateObj.time)
+                          .start();
+
+                      animateObj.tp = new TWEEN.Tween(bone.position)
+                          .to({
+                              x: pa[animateObj.index],
+                              y: pa[animateObj.index + 1],
+                              z: pa[animateObj.index + 2]
+                          }, animateObj.time)
+                          .start()
+                          .onComplete(() => {
+                              // Update the index and check for loop or completion.
+                              animateObj.index += 3;
+                              if (animateObj.index >= pa.length) {
+                                  animateObj.index = 0;
+                                  if (animateObj.loop) {
+                                      ani();
+                                  }
+                              } else {
+                                  ani();
+                              }
+                          });
+                  }
+              }
+          };
+          return animateObj;
       }
 
-      function parseSMD( text ) {
+      function parseSMD(text) {
+        // Parse the provided SMD text and convert it into an array of objects.
         let bodyObj = [];
         let index = 0;
-        let passage = text.split( '\n' );
+        let passage = text.split('\n');
         let passageLen = passage.length;
         let flag = undefined;
 
-        for ( index = 0; index < passageLen; index++ ) {
-          let line = passage[ index ];
+        // Iterate through each line of the SMD text.
+        for (index = 0; index < passageLen; index++) {
+            let line = passage[index];
 
-          if ( !flag ) {
-            if ( line.indexOf( 'nodes' ) > -1 ) {
-              flag = 'nodes';
-              continue;
-            } else if ( line.indexOf( 'skeleton' ) > -1 ) {
-              flag = 'skeleton';
-              continue;
+            // Check for the 'nodes' or 'skeleton' section.
+            if (!flag) {
+                if (line.indexOf('nodes') > -1) {
+                    flag = 'nodes';
+                    continue;
+                } else if (line.indexOf('skeleton') > -1) {
+                    flag = 'skeleton';
+                    continue;
+                }
             }
-          }
-          if ( !flag ) {
-            continue;
-          }
-          if ( line.indexOf( 'end' ) > -1 ) {
-            flag = undefined;
-            continue;
-          }
-          if ( flag === 'nodes' ) {
-            parseNodes( bodyObj, line );
-          } else if ( flag === 'skeleton' ) {
-            parseSkeleton( bodyObj, line )
-          }
+
+            // Skip lines if not in 'nodes' or 'skeleton' section.
+            if (!flag) {
+                continue;
+            }
+
+            // Check for the end of the section.
+            if (line.indexOf('end') > -1) {
+                flag = undefined;
+                continue;
+            }
+
+            // Parse 'nodes' or 'skeleton' section based on the flag.
+            if (flag === 'nodes') {
+                parseNodes(bodyObj, line);
+            } else if (flag === 'skeleton') {
+                parseSkeleton(bodyObj, line);
+            }
         }
+
+        // Return the parsed body object.
         return bodyObj;
       }
 
-      function parseNodes( bodyObj, line ) {
-        let info = line.split( ' ' );
-        bodyObj[ parseInt( info[ 0 ] ) ] = {
-          name: info[ 1 ].substr( 1, info[ 1 ].length - 2 ),
-          parent: info[ 2 ],
-          position: [],
-          rotation: [],
-          bone: undefined
-        }
+      function parseNodes(bodyObj, line) {
+        // Parse the 'nodes' section of the SMD file and store node information in the bodyObj array.
+        let info = line.split(' ');
+        
+        // Extract and store information for each node.
+        bodyObj[parseInt(info[0])] = {
+            name: info[1].substr(1, info[1].length - 2),
+            parent: info[2],
+            position: [],
+            rotation: [],
+            bone: undefined
+        };
       }
 
-      function parseSkeleton( bodyObj, line ) {
-        if ( line.indexOf( 'time' ) > -1 ) {
-          bodyObj.tmpIndex = parseInt( line.split( ' ' )[ 1 ] );
-          return;
+      function parseSkeleton(bodyObj, line) {
+        // Parse the 'skeleton' section of the SMD file.
+
+        if (line.indexOf('time') > -1) {
+            // Check if the line contains information about the time.
+            // If yes, set the temporary index in the bodyObj.
+            bodyObj.tmpIndex = parseInt(line.split(' ')[1]);
+            return;
         }
-        let info = line.split( ' ' );
 
-        let obj = bodyObj[ parseInt( info[ 0 ] ) ];
-        obj.position.push( parseFloat( info[ 1 ] ) );
-        obj.position.push( parseFloat( info[ 2 ] ) );
-        obj.position.push( parseFloat( info[ 3 ] ) );
+        // If not a 'time' line, extract information about position and rotation.
+        let info = line.split(' ');
 
-        obj.rotation.push( parseFloat( info[ 4 ] ) );
-        obj.rotation.push( parseFloat( info[ 5 ] ) );
-        obj.rotation.push( parseFloat( info[ 6 ] ) );
+        let obj = bodyObj[parseInt(info[0])];
+        // Get the node object from bodyObj based on the node index.
 
+        obj.position.push(parseFloat(info[1]));
+        obj.position.push(parseFloat(info[2]));
+        obj.position.push(parseFloat(info[3]));
+        // Extract and store position information.
+
+        obj.rotation.push(parseFloat(info[4]));
+        obj.rotation.push(parseFloat(info[5]));
+        obj.rotation.push(parseFloat(info[6]));
+        // Extract and store rotation information.
       }
 
-      function findBone( bone, smd ) {
-        for ( let i in bone ) {
-          smd[ i ].bone = bone[ i ];
-        }
+      function findBone(bone, smd) {
+          // Associate bone information with corresponding nodes in the parsed SMD data.
+
+          for (let i in bone) {
+              smd[i].bone = bone[i];
+          }
       }
     </script>
     
