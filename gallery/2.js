@@ -1383,12 +1383,14 @@ var map = {
 			neighbors: [ "t8", "t10" ],
 			materialId: "m4",
 			hasCome: function() {
-				app.world.charactor.walkingPath = [];
 				setTimeout( () => {
 					app.world.scene.remove( app.world.childrenWithId.key );
-					app.world.charactor.play( 'win' );
 					app.world.winSound.play();
-				} );
+					app.world.charactor.play( 'win' );
+					setTimeout(() => {
+					   window.location.href = 'ending.html';
+					  }, 4000);
+				 } );
 			}
 		},
 		t10: {

@@ -1,0 +1,126 @@
+<!-- HTML, Styles, and Scripts -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Monument Valley</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styles */
+        body, html {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #canvas {
+            display: block;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: palevioletred;
+            z-index: 1;
+        }
+
+        .text {
+            font-size: 5em;
+            font-style: oblique;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="overlay">
+        <div class="text">Congratulations</div>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.141.0/build/three.module.js",
+                "GLTFLoader": "https://unpkg.com/three@0.141.0/examples/jsm/loaders/GLTFLoader.js"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import { GLTFLoader } from 'GLTFLoader';
+        import * as THREE from 'three';
+
+        // Setting up scene, renderer, and camera
+        let scene = new THREE.Scene();
+        let renderer = new THREE.WebGLRenderer({
+            canvas: document.querySelector('#canvas'),
+            antialias: true
+        });
+        renderer.outputEncoding = THREE.sRGBEncoding;
+
+        let camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight);
+        camera.position.set(-100, -1, -0.8);
+
+        let textureLoader = new THREE.TextureLoader();
+        let imageTexture = textureLoader.load('img/ending.png'); // Adjust image path
+        scene.background = imageTexture;
+
+        let light = new THREE.DirectionalLight(0xFFEAA8, 1.5);
+        light.position.set(1, 1, 5);
+        scene.add(light);
+
+        // Common variables for concatenating models
+        let confettiModels = []; // Array of models
+        let numModels = 5; // Number of models to concatenate
+        let initialYPosition = 380; // Initial position setup
+
+        let loader = new GLTFLoader();
+        for (let i = 0; i < numModels; i++) {
+            loader.load('models/confetti/scene.gltf', function (gltf) {
+                let confetti = gltf.scene;
+                confetti.rotation.z = Math.PI / 1.8;
+                confetti.position.set(initialYPosition + i * 0.1, 0, initialYPosition + i * 0.1); // Concatenating models with a certain distance
+                scene.add(confetti);
+                confettiModels.push(confetti);
+            });
+        }
+
+        // Animation function
+        function animate() {
+            resizeRendererToDisplaySize();
+           
+            for (let i = 0; i < confettiModels.length; i++) {
+                confettiModels[i].position.y -= 5; // Moving the model downwards
+
+                // Concatenate models to the top again when they move below
+                if (confettiModels[i].position.y < -200) {
+                    confettiModels[i].position.y = initialYPosition + (numModels - 1) * 100;
+                }
+            }
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+
+        // Function to adjust canvas size
+        function resizeRendererToDisplaySize() {
+            const canvas = renderer.domElement;
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const needResize = canvas.width !== width || canvas.height !== height;
+
+            if (needResize) {
+                renderer.setSize(width, height, false);
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+            }
+        }
+
+        animate(); // Start animation
+    </script>
+</body>
+</html>
