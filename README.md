@@ -14,6 +14,8 @@ If you click on the direction you want to go, your character will move there.
 
 Connect your path using a variety of devices.
 
+>NOTE : If the screen ratio does not match, you can play the game smoothly by setting the ratio to 50% and refreshing.
+
 </br>
 
 ## Installation
