@@ -95,39 +95,43 @@
 
       //When load 3D model, Repeat this form named load###()
       function loadKey() {
-        // Create an MTL loader using THREE.MTLLoader and set up the loader manager.
-        var mtlLoader = new THREE.MTLLoader(level.loaderFactory.manager);
+        // Create an MTL loader using THREE.MTLLoader and set up the loader manager.        
+        var mtlLoader = new THREE.MTLLoader( level.loaderFactory.manager );
         // Set the load path for the MTL loader. The folder is where the MTL and OBJ files are located.
-        mtlLoader.setPath('models/moon/');
-        // Load the MTL file ('Luna.mtl') and execute the callback function with the loaded materials.
-        mtlLoader.load('Luna.mtl', (materials) => {
-            // Preload the loaded material information for efficient model loading.
-            materials.preload();
-            // Create an OBJ loader using THREE.OBJLoader.
-            var objLoader = new THREE.OBJLoader();
-            // Set the materials to the OBJ loader.
-            objLoader.setMaterials(materials);
-            // Set the load path for the OBJ loader to 'models/moon/'.
-            objLoader.setPath('models/moon/');
-            // Load the OBJ file ('Luna.obj') and execute the callback function with the loaded 3D model.
-            objLoader.load('Luna.obj', (obj) => {
-                console.log(obj.children);
-                // Add a custom object constructor named "key" to the level.meshFactory object.
-                level.meshFactory.addUserObjectCreator("key", (item, useless, container) => {
-                    // Clone the first child object of the loaded 3D model.
-                    let mesh = obj.children[0].clone();
-                    // Set the size of the model using size information from the item object.
-                    mesh.scale.set(item.sx || 0, item.sy || 0, item.sz || 0);
-                    // Set the position of the model using position information from the item object.
-                    mesh.position.set(item.x * size || 0, item.y * size || 0, item.z * size || 0);
-                    // Set the rotation of the model using rotation information from the item object.
-                    mesh.rotation.set(item.rx || 0, item.ry || 0, item.rz || 0);
-                    container.add(mesh);
-                    return mesh;
-                });
-            });
-        });
-
+        mtlLoader.setPath( 'models/Shiba/' );
+        // Load the MTL file and execute the callback function with the loaded materials.
+        mtlLoader.load( 'shiba.mtl', ( materials ) => {
+          // Preload the loaded material information for efficient model loading.
+          materials.preload();
+          // Create an OBJ loader using THREE.OBJLoader.
+          var objLoader = new THREE.OBJLoader();
+          // Set the materials to the OBJ loader.
+          objLoader.setMaterials( materials );
+          // Set the load path for the OBJ loader to 'models/Shiba/'.
+          objLoader.setPath( 'models/Shiba/' );
+          // Load the OBJ file ('Shiba.obj') and execute the callback function with the loaded 3D model.
+          objLoader.load( 'shiba.obj', ( obj ) => {
+            // Add a custom object constructor named "key" to the level.meshFactory object.
+            level.meshFactory.addUserObjectCreator( "key", ( item, useless, container ) => {
+              // All children merged object
+              let mergedObject = new THREE.Object3D();
+              // Add all children to merged objects
+              for (let child of obj.children) {
+                  mergedObject.add(child.clone());
+              }
+              //replicate merged objects
+              let mesh = mergedObject.clone();
+              // Set the size of the model using size information from the item object.
+              mesh.scale.set( (item.sx || 1)*1.5, (item.sy || 1)*1.5, (item.sz || 1 )*1.5); 
+              // Set the position of the model using position information from the item object.
+              mesh.position.set( (item.x * size || 0), (item.y * size || 0)-25, (item.z *size || 0 )); 
+              // Set the rotation of the model using rotation information from the item object.
+              mesh.rotation.set( item.rx || 0, item.ry || 0, item.rz || 0 );
+              container.add( mesh );
+              return mesh;
+            } );
+          } );
+        } );
       }
 
       function loadCar() {
@@ -374,9 +378,9 @@
         charactor = new HYPEOMETRY.Charactor( level, {
           model: elf,
           scale: {
-            x: 2,
-            y: 2,
-            z: 2
+            x: 4,
+            y: 4,
+            z: 4
           }
         } );
 
