@@ -1,3 +1,4 @@
+
 <!-- 1.html and 2.html have the same form -->
 <!DOCTYPE html>
 <html>
@@ -18,6 +19,13 @@
     <script src="../build/hypeometry.js"></script>
     <script src="2.js"></script>
     <script>
+      // JavaScript를 사용하여 초기 축소 비율 설정
+      document.addEventListener('DOMContentLoaded', function() {
+          // 0.5는 50% 축소를 의미합니다. 1.0이 원본 크기입니다.
+          document.body.style.zoom = '1.0';
+      });
+    </script>
+    <script>
       class ActonGroup {
         constructor() {
           this.actions = [];
@@ -35,9 +43,8 @@
       }
 
       let app = new NOVA.App();
-      //    app.renderer.sortObjects = false;
       let size = app.getWorldHeight() / 20;
-      let level = new HYPEOMETRY.GameLevel( app, null, map, {
+      let level = new HYPEOMETRY.GameLevel( app, null, map, {  
         blockSize: size,
         moveSpeed: 300
       } );
@@ -95,22 +102,23 @@
 
       function loadKey() {
         var mtlLoader = new THREE.MTLLoader( level.loaderFactory.manager );
-        mtlLoader.setPath( 'models/else/' );
-        mtlLoader.load( 'apple_obj.mtl', ( materials ) => {
+        mtlLoader.setPath( 'models/Shiba/' );
+        mtlLoader.load( 'shiba.mtl', ( materials ) => {
           materials.preload();
           var objLoader = new THREE.OBJLoader();
           objLoader.setMaterials( materials );
-          objLoader.setPath( 'models/else/' );
-          objLoader.load( 'apple_obj.obj', ( obj ) => {
+          objLoader.setPath( 'models/Shiba/' );
+          objLoader.load( 'shiba.obj', ( obj ) => {
 
             level.meshFactory.addUserObjectCreator( "key", ( item, useless, container ) => {
+
               let mergedObject = new THREE.Object3D();
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
               }
               let mesh = mergedObject.clone();
-              mesh.scale.set( (item.sx || 1)*3, (item.sy || 1)*3, (item.sz || 1 )*3);
-              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 );
+              mesh.scale.set( (item.sx || 1)*5, (item.sy || 1)*5, (item.sz || 1 )*5); 
+              mesh.position.set( item.x * size || 0, (item.y * size || 0)+8, item.z *size || 0 ); 
               mesh.rotation.set( item.rx || 0, item.ry || 0, item.rz || 0 );
               container.add( mesh );
               return mesh;
@@ -130,14 +138,15 @@
           objLoader.setPath( 'models/tree/' );
           objLoader.load( 'tree1.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "tree1", ( item, useless, container ) => {
+
               let mergedObject = new THREE.Object3D();
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
               }
               let mesh = mergedObject.clone();
               
-              mesh.scale.set( (item.sx || 1)*9, (item.sy || 1)*9, (item.sz || 1 )*9);
-              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 );
+              mesh.scale.set( (item.sx || 1)*9, (item.sy || 1)*9, (item.sz || 1 )*9); 
+              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); 
               mesh.rotation.set( item.rx || 0, 300, item.rz || 0 );
               container.add( mesh );
               return mesh;
@@ -156,14 +165,15 @@
                 objLoader.setPath( 'models/tree/' );
                 objLoader.load( 'tree2.obj', ( obj ) => {
                   level.meshFactory.addUserObjectCreator( "tree2", ( item, useless, container ) => {
+
                     let mergedObject = new THREE.Object3D();
                     for (let child of obj.children) {
                         mergedObject.add(child.clone());
                     }
                     let mesh = mergedObject.clone();
-
-                    mesh.scale.set( (item.sx || 1)*9, (item.sy || 1)*9, (item.sz || 1 )*9);
-                    mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 );
+                    
+                    mesh.scale.set( (item.sx || 1)*9, (item.sy || 1)*9, (item.sz || 1 )*9); 
+                    mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); 
                     mesh.rotation.set( item.rx || 0, 300, item.rz || 0 );
                     container.add( mesh );
                     return mesh;
@@ -182,7 +192,8 @@
           objLoader.setPath( 'models/tree/' );
           objLoader.load( 'tree4.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "tree3", ( item, useless, container ) => {
-              let mergedObject = new THREE.Object3D();가
+
+              let mergedObject = new THREE.Object3D();
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
               }
@@ -209,6 +220,7 @@
           objLoader.setPath( 'models/tree/' );
           objLoader.load( 'grass1.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "grass1", ( item, useless, container ) => {
+
               let mergedObject = new THREE.Object3D();
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
@@ -234,14 +246,15 @@
           objLoader.setMaterials( materials );
           objLoader.setPath( 'models/tree/' );
           objLoader.load( 'grass2.obj', ( obj ) => {
-            level.meshFactory.addUserObjectCreator( "grass2", ( item, useless, container ) => { 
+            level.meshFactory.addUserObjectCreator( "grass2", ( item, useless, container ) => {
+
               let mergedObject = new THREE.Object3D();
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
               }
               let mesh = mergedObject.clone();
               
-              mesh.scale.set( (item.sx || 1)*30, (item.sy || 1)*30, (item.sz || 1 )*30); 
+              mesh.scale.set( (item.sx || 1)*30, (item.sy || 1)*30, (item.sz || 1 )*30);
               mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); 
               mesh.rotation.set( item.rx || 0, 300, item.rz || 0 );
               container.add( mesh );
@@ -261,13 +274,14 @@
           objLoader.setPath( 'models/tree/' );
           objLoader.load( 'flower1.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "flower1", ( item, useless, container ) => {
+
               let mergedObject = new THREE.Object3D();
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
               }
               let mesh = mergedObject.clone();
               
-              mesh.scale.set( (item.sx || 1)*60, (item.sy || 1)*60, (item.sz || 1 )*60); 
+              mesh.scale.set( (item.sx || 1)*60, (item.sy || 1)*60, (item.sz || 1 )*60);
               mesh.position.set( (item.x * size || 0) , (item.y * size || 0),  item.z *size || 0 ); 
               mesh.rotation.set( item.rx || 0, 300, item.rz || 0 );
               container.add( mesh );
@@ -287,6 +301,7 @@
           objLoader.setPath( 'models/tree/' );
           objLoader.load( 'bushes3.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "bushes1", ( item, useless, container ) => {
+
               let mergedObject = new THREE.Object3D();
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
@@ -313,6 +328,7 @@
           objLoader.setPath( 'models/tree/' );
           objLoader.load( 'stone1.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "stone1", ( item, useless, container ) => {
+
               let mergedObject = new THREE.Object3D();
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
@@ -339,6 +355,7 @@
           objLoader.setPath( 'models/tree/' );
           objLoader.load( 'stone2.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "stone2", ( item, useless, container ) => {
+
               let mergedObject = new THREE.Object3D();
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
@@ -365,6 +382,7 @@
           objLoader.setPath( 'models/tree/' );
           objLoader.load( 'mushroom3.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "mushroom1", ( item, useless, container ) => {
+
               let mergedObject = new THREE.Object3D();
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
@@ -392,6 +410,7 @@
           objLoader.setPath( 'models/else/' );
           objLoader.load( 'bird1.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "bird1", ( item, useless, container ) => {
+
               let mergedObject = new THREE.Object3D();
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
@@ -399,7 +418,7 @@
               let mesh = mergedObject.clone();
               
               mesh.scale.set( (item.sx || 1)*100, (item.sy || 1)*100, (item.sz || 1 )*100); 
-              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); 
+              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 );              
               mesh.rotation.set( item.rx || 0, (item.ry || 0)+50 , item.rz || 0 );
               container.add( mesh );
               return mesh;
@@ -419,6 +438,7 @@
           objLoader.setPath( 'models/else/' );
           objLoader.load( 'bird3.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "bird2", ( item, useless, container ) => {
+
               let mergedObject = new THREE.Object3D();
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
@@ -445,6 +465,7 @@
           objLoader.setPath( 'models/else/' );
           objLoader.load( 'bird3.obj', ( obj ) => {
             level.meshFactory.addUserObjectCreator( "bird3", ( item, useless, container ) => {
+
               let mergedObject = new THREE.Object3D();
               for (let child of obj.children) {
                   mergedObject.add(child.clone());
@@ -452,7 +473,7 @@
               let mesh = mergedObject.clone();
               
               mesh.scale.set( (item.sx || 1)*25, (item.sy || 1)*25, (item.sz || 1 )*25); 
-              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 ); 
+              mesh.position.set( item.x * size || 0 , item.y * size || 0, item.z *size || 0 );
               mesh.rotation.set( item.rx || 0, (item.ry || 0)+50 , item.rz || 0 );
               container.add( mesh );
               return mesh;
@@ -470,9 +491,9 @@
         charactor = new HYPEOMETRY.Charactor( level, {
           model: elf,
           scale: {
-            x: 2,
-            y: 2,
-            z: 2
+            x: 4,
+            y: 4,
+            z: 4
           }
         } );
 
